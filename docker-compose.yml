@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  swo-redefined-database:
+    container_name: swo-redefined-database
+    restart: always
+    image: mysql
+    env_file:
+      - .env
+    volumes:
+      - ~/mysql/data:/data/db
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - '3306:3306'
