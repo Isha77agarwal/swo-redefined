@@ -7,15 +7,19 @@
   "private": true,
   "dependencies": {
     "@prisma/client": "4.5.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "pug": "^3.0.2"
   },
   "scripts": {
     "start-dev": "nodemon server.ts"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
     "@types/express": "^4.17.14",
+    "@types/express-session": "^1.17.5",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.7",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
