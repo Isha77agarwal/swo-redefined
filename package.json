@@ -16,7 +16,8 @@
     "winston": "^3.8.2"
   },
   "scripts": {
-    "start-dev": "nodemon server.ts"
+    "start-dev": "nodemon server.ts",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",
