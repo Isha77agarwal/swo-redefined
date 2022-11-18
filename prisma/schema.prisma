@@ -1,0 +1,243 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+enum Month {
+    January
+    February
+    March
+    April
+    May
+    June
+    July
+    August
+    September
+    October
+    November
+    December
+}
+
+enum ProgramType {
+    BTech
+    MTech
+    PhD
+}
+
+enum Category {
+    General
+    OBC
+    ST
+    SC
+    EWS
+}
+
+enum Religion {
+    Atheist
+    Hinduism
+    Islam
+    Christianity
+    Sikhism
+    Jainism
+    Buddhism
+    Other
+}
+
+enum PeriodType {
+    Fresh
+    Pending
+}
+
+model Admin {
+    username       String      @id
+    password       Bytes
+    name           String
+    email          String
+    mobile         String
+    is_super_admin Boolean
+    salt           Bytes
+    token          String?
+    Department     Department?
+}
+
+model Department {
+    id               String             @id
+    name             String
+    hod              Admin              @relation(fields: [hod_id], references: [username])
+    hod_id           String             @unique
+    Student          Student[]
+    Branch           Branch[]
+    MTechFellowship  MTechFellowship[]
+    PhDFellowship    PhDFellowship[]
+    FellowshipPeriod FellowshipPeriod[]
+}
+
+model Branch {
+    id               String             @id
+    name             String
+    department       Department         @relation(fields: [department_id], references: [id])
+    department_id    String
+    Student          Student[]
+    Session          Session[]
+    MTechFellowship  MTechFellowship[]
+    PhDFellowship    PhDFellowship[]
+    FellowshipPeriod FellowshipPeriod[]
+}
+
+model Session {
+    id               String             @id
+    branch           Branch             @relation(fields: [branch_id], references: [id])
+    branch_id        String
+    year             Int
+    course_year      Int
+    semester         Int
+    start_month      Month
+    end_month        Month
+    Student          Student[]
+    MTechFellowship  MTechFellowship[]
+    PhDFellowship    PhDFellowship[]
+    FellowshipBlock  FellowshipBlock[]
+    FellowshipPeriod FellowshipPeriod[]
+
+    @@index([branch_id])
+}
+
+model FinancialInformation {
+    student         Student @relation(fields: [registration_no], references: [registration_no])
+    registration_no String  @id
+    bank            String
+    account_no      String
+    IFSC_code       String
+    bank_branch     String
+}
+
+model AcademicInformation {
+    student         Student   @relation(fields: [registration_no], references: [registration_no])
+    registration_no String    @id
+    category        Category
+    religion        Religion?
+    nationality     String?
+    email           String
+    password        String
+    date_of_birth   DateTime
+    father_name     String
+}
+
+model Student {
+    registration_no      String                @id
+    department           Department            @relation(fields: [department_id], references: [id])
+    branch               Branch                @relation(fields: [branch_id], references: [id])
+    program_type         ProgramType
+    session              Session               @relation(fields: [session_id], references: [id])
+    semester             Int
+    password             Bytes
+    salt                 Bytes
+    presentation_date    DateTime?
+    JRF_start_date       DateTime?
+    JRF_end_date         DateTime?
+    SRF_start_date       DateTime?
+    SRF_end_date         DateTime?
+    session_id           String
+    branch_id            String
+    department_id        String
+    FinancialInformation FinancialInformation?
+    AcademicInformation  AcademicInformation?
+    MTechFellowship      MTechFellowship[]
+    PhDFellowship        PhDFellowship[]
+    FellowshipBlock      FellowshipBlock[]
+    HRADuration          HRADuration[]
+    Result               StudentResult[]
+
+    @@index([branch_id])
+}
+
+model StudentResult {
+    student    Student @relation(fields: [student_id], references: [registration_no])
+    student_id String
+    semester   Int     @id
+    spi        Decimal
+    cpi        Decimal
+    passed     Boolean
+}
+
+model MTechFellowship {
+    student              Student    @relation(fields: [registration_no], references: [registration_no])
+    department           Department @relation(fields: [department_id], references: [id])
+    branch               Branch     @relation(fields: [branch_id], references: [id])
+    session              Session    @relation(fields: [session_id], references: [id])
+    month                Month
+    stipend              Int
+    approved_by_accounts Boolean    @default(false)
+    pending_fill         Boolean    @default(false)
+    semester             Int
+    deductions           Int
+    deduction_dates      Json
+    session_id           String
+    branch_id            String
+    department_id        String
+    registration_no      String
+
+    @@id([registration_no, semester, month])
+}
+
+model PhDFellowship {
+    student              Student    @relation(fields: [registration_no], references: [registration_no])
+    department           Department @relation(fields: [department_id], references: [id])
+    branch               Branch     @relation(fields: [branch_id], references: [id])
+    session              Session    @relation(fields: [session_id], references: [id])
+    month                Month
+    stipend              Int
+    approved_by_accounts Boolean
+    pending_fill         Boolean
+    semester             Int
+    deductions           Int
+    deduction_dates      Json
+    hra                  Int
+    session_id           String
+    branch_id            String
+    department_id        String
+    registration_no      String
+
+    @@id([registration_no, session_id, month])
+}
+
+model FellowshipBlock {
+    student         Student  @relation(fields: [registration_no], references: [registration_no])
+    session         Session  @relation(fields: [session_id], references: [id])
+    session_id      String
+    registration_no String
+    start_date      DateTime
+    end_date        DateTime
+
+    @@unique([registration_no, start_date, end_date])
+    @@index([registration_no])
+}
+
+model FellowshipPeriod {
+    department        Department @relation(fields: [department_id], references: [id])
+    department_id     String
+    session           Session    @relation(fields: [session_id], references: [id])
+    session_id        String
+    branch            Branch     @relation(fields: [branch_id], references: [id])
+    branch_id         String
+    month             Month
+    type              PeriodType
+    period_start_date DateTime
+    period_end_date   DateTime
+
+    @@id([branch_id, session_id, month])
+}
+
+model HRADuration {
+    student         Student  @relation(fields: [registration_no], references: [registration_no])
+    registration_no String   @id
+    start_date      DateTime
+    end_date        DateTime
+}

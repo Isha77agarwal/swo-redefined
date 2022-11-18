@@ -2,7 +2,8 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import session from "express-session";
 import cookieParser from "cookie-parser";
-import {router as departmentRouter} from "./rest/department/router";
+import winston from "winston";
+import expressWinston from "express-winston";
 
 // put .env file variables in process.env
 dotenv.config();
@@ -10,6 +11,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 const sessionSecret = process.env.SESSION_SECRET;
+const environment = process.env.ENVIRONMENT;
 
 app.set("view engine", "jade");
 
@@ -28,8 +30,34 @@ app.use(
   })
 );
 
+if(environment === "DEVELOPMENT" || environment === "TEST") {
+    app.use(expressWinston.logger({
+        transports: [
+            new winston.transports.Console()
+        ],
+        format: winston.format.combine(
+            winston.format.colorize(),
+            winston.format.json()
+        ),
+        meta: true,
+        msg: "HTTP {{req.method}} {{req.url}}",
+        expressFormat: true,
+        colorize: false,
+    }));
+}
+app.use(expressWinston.errorLogger({
+    transports: [
+        environment === "PRODUCTION" ? new winston.transports.File({
+            filename: "prod_error_logs.log"
+        }) :  new winston.transports.Console()
+    ],
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.json()
+    )
+}));
+
 // setting up routers
-app.use("/department", departmentRouter);
 
 app.listen(port, () => {
   console.log(`[SUCCESS] Server is running on http://localhost:${port}`);
