@@ -49,3 +49,16 @@ Improved web portal for the Student Welfare Office, MNNIT Allhabad.
   ```shell
   npm run start-dev
   ```
+
+## Documentation
+
+[Docsify.js](https://docsify.js.org) is used to create documentation for the website. It is hosted on
+GitHub pages and can be browsed [here]()
+
+## Contributing
+
+- pull the main branch
+- create and checkout a new branch
+- make changes
+- commit and push changes
+- create a pull request
