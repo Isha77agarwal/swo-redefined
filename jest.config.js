@@ -5,10 +5,12 @@ module.exports = {
     testPathIgnorePatterns: [
         "<rootDir>/node_modules",
         "<rootDir>/repositories",
+        "<rootDir>/.github"
     ],
     coveragePathIgnorePatterns: [
         "<rootDir>/node_modules",
         "<rootDir>/repositories",
+        "<rootDir>/.github"
     ],
     coverageThreshold: {
         global: {
