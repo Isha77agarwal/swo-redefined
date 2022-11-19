@@ -1,5 +1,7 @@
 # Authentication
 
+!> This page is not complete and requires further modifications.
+
 Authentication includes the following tasks:
 - Login to accounts.
 - Logout of accounts.
