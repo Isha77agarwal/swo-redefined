@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import winston from "winston";
 import expressWinston from "express-winston";
 
+import userRouter from "./routes/userRouter";
+
 // put .env file variables in process.env
 dotenv.config();
 
@@ -58,6 +60,7 @@ app.use(expressWinston.errorLogger({
 }));
 
 // setting up routers
+app.use("/users/", userRouter);
 
 app.listen(port, () => {
   console.log(`[SUCCESS] Server is running on http://localhost:${port}`);
