@@ -27,7 +27,8 @@ It requires a _role_ path parameter which should be either _student_ or _departm
   - If no error is thrown, set session and redirect.
   - If error is thrown, then send the appropriate status code depending on the error.
 
-!> If you want to store something in the session while the user has logged in see [Sessions]()
+!> If you want to store something in the session while the user has logged in see [Sessions]().
+If you store something in the session be sure to remove it while logging out.
 
 #### Application Layer
 
@@ -39,3 +40,15 @@ It requires a _role_ path parameter which should be either _student_ or _departm
   - The password provided from UI layer is hashed with the salt retrieved from `UserRepository` and equated with 
     the stored hashed password from database.
   - If the hashes are not equal then error is thrown.
+
+## Logout
+
+Logout has only one permissible request method: **POST**
+
+#### UI Layer
+- **POST**
+  - removes the session data and logs out the user.
+
+## Reset password
+
+!> To be implemented.

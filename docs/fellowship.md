@@ -57,3 +57,6 @@ using fresh option or was not given full fellowship of any previous month/year u
 
 Fellowship is calculated (for our benefit) on per day basis. Deduction dates are removed from the days of the
 month while calculating the fellowship. HRA and other benefits are also added if required.
+
+For Ph.D. fellowships, JRF and SRF have different amounts, so it is important to check
+if current student is eligible under JRF and SRF.
