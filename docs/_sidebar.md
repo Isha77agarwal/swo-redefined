@@ -1,4 +1,6 @@
 * [Home](/)
 * [Architecture](architecture.md)
+* [Fellowship](fellowship.md)
 * [Documentation](documentation/README.md)
   * [Authentication](documentation/authentication.md)
+  * [ER Diagram](documentation/er.md)
