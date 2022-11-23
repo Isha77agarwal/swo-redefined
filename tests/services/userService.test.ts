@@ -2,7 +2,7 @@ import { createUserRepositoryMock } from "../testUtils";
 import { UserService } from "../../services/userService";
 import { UserRepository } from "../../repositories/userRepository";
 
-describe("UseService", () => {
+describe("UserService", () => {
     let mockRepository: UserRepository;
     let testUserService: UserService;
 
