@@ -1,5 +1,5 @@
 import express from "express";
-import {userService} from "../services/authService";
+import {AuthService, userService} from "../services/authService";
 
 const router = express.Router();
 
@@ -32,9 +32,17 @@ router.post("/login/:role", async (req, res) => {
         }
         res.status(200).send("Login successful.");
     } catch (err) {
-        // TODO add more error message handling.
         console.log(err);
-        res.status(401).send("username or password is wrong!");
+        switch ((err as Error).message) {
+            case AuthService.USER_NOT_EXISTS_ERROR:
+                res.status(401).send("User doesn't exist!");
+                break;
+            case AuthService.PASSWORD_ERROR:
+                res.status(401).send("Username or password is wrong!");
+                break;
+            default:
+                res.status(500).send("Unknown error occurred!");
+        }
         return;
     }
 });

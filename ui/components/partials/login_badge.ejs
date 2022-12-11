@@ -1,0 +1,77 @@
+<style>
+    #loginModalToggle {
+        width: 80px;
+        height: 80px;
+        background-image: url("/ui/media/person.png");
+        background-size: cover;
+        cursor: pointer;
+    }
+</style>
+<!--TODO add error message showing in the modal-->
+<!-- Modal Toggle-->
+
+<div data-bs-toggle="modal" id="loginModalToggle" class="d-block m-3" data-bs-target="#loginModal">
+</div>
+
+<!-- Modal Toggle-->
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- PILLS NAV -->
+                <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active"
+                                id="pills-student-login"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-student"
+                                type="button" role="tab"
+                                aria-controls="pills-student"
+                                aria-selected="true">Student Login
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link"
+                                id="pills-department-login"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-department"
+                                type="button" role="tab"
+                                aria-controls="pills-department"
+                                aria-selected="false">Department Login
+                        </button>
+                    </li>
+                </ul>
+                <!-- PILLS NAV -->
+
+                <!-- PILLS CONTENT -->
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active"
+                         id="pills-student"
+                         role="tabpanel"
+                         aria-labelledby="pills-student-login"
+                         tabindex="0">
+                        <%- include("../forms/student_login_form"); %>
+                    </div>
+                    <div class="tab-pane fade"
+                         id="pills-department"
+                         role="tabpanel"
+                         aria-labelledby="pills-department-login"
+                         tabindex="0">
+                        <%- include("../forms/department_login_form"); %>
+                    </div>
+                </div>
+                <!-- PILLS CONTENT -->
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<form action="/users/login/student" method="post">
+      
+    <!-- Username input -->
+    <div class="form-floating mb-3">
+        <input type="text" name="username" id="username" class="form-control" placeholder="Registration" required/>
+        <label for="username">Registration</label>
+    </div>
+    
+    <!-- Password input -->
+    <div class="form-floating mb-3">
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required/>
+        <label for="password">Password</label>
+    </div>
+    <small class="text-danger mb-5">
+        NOTE: Password for first time login is DOB in DDMMYYYY Format
+        <!-- TODO add email here. -->
+    </small>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">Sign in</button>
+</form>

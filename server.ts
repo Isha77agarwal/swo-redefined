@@ -5,7 +5,9 @@ import cookieParser from "cookie-parser";
 import winston from "winston";
 import expressWinston from "express-winston";
 
+import rootRouter from "./routes/rootRouter";
 import userRouter from "./routes/userRouter";
+import path from "path";
 
 // put .env file variables in process.env
 dotenv.config();
@@ -15,10 +17,15 @@ const port = process.env.PORT;
 const sessionSecret = process.env.SESSION_SECRET;
 const environment = process.env.ENVIRONMENT;
 
-app.set("view engine", "jade");
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/ui"));
 
 // setting up middlewares
 app.use(express.json());
+app.use(express.static(__dirname + "/ui"));
+app.use("/bootstrap", express.static(__dirname + "/node_modules/bootstrap/dist"));
+app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist"));
+app.use("/ui/media", express.static(__dirname + "/ui/media"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
@@ -60,6 +67,7 @@ app.use(expressWinston.errorLogger({
 }));
 
 // setting up routers
+app.use("/", rootRouter);
 app.use("/users/", userRouter);
 
 app.listen(port, () => {
