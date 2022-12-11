@@ -1,12 +1,13 @@
-import { UserRepository } from "../repositories/userRepository";
+import { AdminRepository } from "../repositories/adminRepository";
 import { Admin, Student } from "@prisma/client";
-import { UserService } from "../services/userService";
+import { AuthService } from "../services/authService";
+import {StudentRepository} from "../repositories/studentRepository";
 
-export function createUserRepositoryMock(): UserRepository {
+export function createAdminRepositoryMock(): AdminRepository {
     return {
         getAdminByUsername(username: string): Promise<Admin | null> {
             const salt = Buffer.from("TEST_SALT");
-            const password = UserService.getHashedPasswordForTesting("TEST_PASS", salt);
+            const password = AuthService.getHashedPasswordForTesting("TEST_PASS", salt);
 
             const admin: Admin = {
                 username: "TEST_USER",
@@ -24,10 +25,14 @@ export function createUserRepositoryMock(): UserRepository {
             }
             return Promise.resolve(null);
         },
+    };
+}
 
-        getStudentByUsername(username: string): Promise<Student | null> {
+export function createStudentRepositoryMock(): StudentRepository {
+    return {
+        getStudentByRegistration(registration: string): Promise<Student | null> {
             const salt = Buffer.from("TEST_SALT");
-            const password = UserService.getHashedPasswordForTesting("TEST_PASS", salt);
+            const password = AuthService.getHashedPasswordForTesting("TEST_PASS", salt);
 
             const student: Student = {
                 registration_no: "TEST_REG",
@@ -45,11 +50,11 @@ export function createUserRepositoryMock(): UserRepository {
                 department_id: "",
             };
 
-            if (username === student.registration_no) {
+            if (registration === student.registration_no) {
                 return Promise.resolve(student);
             }
 
             return Promise.resolve(null);
-        },
+        }
     };
 }
