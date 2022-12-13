@@ -1,10 +1,8 @@
-import {
-    createAdminRepositoryMock,
-    createStudentRepositoryMock,
-} from "../testUtils";
 import { AuthService } from "../../services/authService";
 import { AdminRepository } from "../../repositories/adminRepository";
 import { StudentRepository } from "../../repositories/studentRepository";
+import createAdminRepositoryMock from "../mocks/adminRepositoryMock";
+import createStudentRepositoryMock from "../mocks/studentRepositoryMock";
 
 describe("UserService", () => {
     let mockAdminRepository: AdminRepository;
