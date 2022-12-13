@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: sessionSecret,
+    secret: sessionSecret!, // DO NOT REMOVE THIS NULL CHECK ELSE TS THROWS ERRORS.
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // one day

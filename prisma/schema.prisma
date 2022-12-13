@@ -161,10 +161,11 @@ model Student {
 model StudentResult {
     student    Student @relation(fields: [student_id], references: [registration_no])
     student_id String
-    semester   Int     @id
+    semester   Int
     spi        Decimal
     cpi        Decimal
     passed     Boolean
+    @@id([student_id, semester])
 }
 
 model MTechFellowship {
