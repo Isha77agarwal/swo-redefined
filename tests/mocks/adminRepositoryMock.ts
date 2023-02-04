@@ -1,6 +1,6 @@
-import {AdminRepository} from "../../repositories/adminRepository";
+import {AdminRepository} from "../../src/repositories/adminRepository";
 import {Admin} from "@prisma/client";
-import {AuthService} from "../../services/authService";
+import {AuthService} from "../../src/services/authService";
 
 export default function createAdminRepositoryMock(): AdminRepository {
     return {

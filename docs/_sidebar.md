@@ -3,4 +3,7 @@
 * [Fellowship](fellowship.md)
 * [Documentation](documentation/README.md)
   * [Authentication](documentation/authentication.md)
+  * [Services](documentation/services.md)
   * [ER Diagram](documentation/er.md)
+  * [Fellowship](documentation/fellowship.md)
+  * [Testing](documentation/testing.md)

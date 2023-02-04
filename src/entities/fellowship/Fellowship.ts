@@ -1,7 +1,7 @@
 abstract class Fellowship {
     private registration: string;
-    private month: Month;
-    private year: number;
+    private readonly month: Month;
+    private readonly year: number;
     private semester: number;
     private deduction_dates: number[];
     private pending_fill: boolean;

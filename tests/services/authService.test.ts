@@ -1,6 +1,6 @@
-import { AuthService } from "../../services/authService";
-import { AdminRepository } from "../../repositories/adminRepository";
-import { StudentRepository } from "../../repositories/studentRepository";
+import { AuthService } from "../../src/services/authService";
+import { AdminRepository } from "../../src/repositories/adminRepository";
+import { StudentRepository } from "../../src/repositories/studentRepository";
 import createAdminRepositoryMock from "../mocks/adminRepositoryMock";
 import createStudentRepositoryMock from "../mocks/studentRepositoryMock";
 

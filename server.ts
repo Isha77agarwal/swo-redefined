@@ -5,8 +5,8 @@ import cookieParser from "cookie-parser";
 import winston from "winston";
 import expressWinston from "express-winston";
 
-import rootRouter from "./routes/rootRouter";
-import userRouter from "./routes/userRouter";
+import rootRouter from "./src/routes/rootRouter";
+import userRouter from "./src/routes/userRouter";
 import path from "path";
 
 // put .env file variables in process.env

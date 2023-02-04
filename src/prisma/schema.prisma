@@ -72,6 +72,7 @@ model Department {
     name             String
     hod              Admin              @relation(fields: [hod_id], references: [username])
     hod_id           String             @unique
+    Session          Session[]
     Student          Student[]
     Branch           Branch[]
     MTechFellowship  MTechFellowship[]
@@ -93,13 +94,15 @@ model Branch {
 
 model Session {
     id               String             @id
-    branch           Branch             @relation(fields: [branch_id], references: [id])
     branch_id        String
+    department_id    String
     year             Int
     course_year      Int
     semester         Int
     start_month      Month
     end_month        Month
+    department       Department         @relation(fields: [department_id], references: [id])
+    branch           Branch?            @relation(fields: [branch_id], references: [id])
     Student          Student[]
     MTechFellowship  MTechFellowship[]
     PhDFellowship    PhDFellowship[]
@@ -133,7 +136,7 @@ model AcademicInformation {
 model Student {
     registration_no      String                @id
     department           Department            @relation(fields: [department_id], references: [id])
-    branch               Branch                @relation(fields: [branch_id], references: [id])
+    branch               Branch?               @relation(fields: [branch_id], references: [id])
     program_type         ProgramType
     session              Session               @relation(fields: [session_id], references: [id])
     semester             Int

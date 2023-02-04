@@ -37,12 +37,12 @@ For a student to be eligible for fresh fellowships, the following conditions mus
 
 ## Fresh Fellowships
 
-Fresh fellowship are awarded to Ph.D. and M.Tech Students each month from 21st of the month to 27th of the month.
+Fresh fellowship are awarded to Ph.D. and M.Tech Students each month from 21st of the month to 25th of the month.
 
 If for some reason fellowship of a student isn't filled during this time period, it is automatically updated to 
 pending fellowship.
 
-For eg:- Fresh Fellowship for month of March will be filled between 21st and 27th March.
+For eg:- Fresh Fellowship for month of March will be filled between 21st and 25th March.
 
 !> If fellowship is not filled within the fresh period, it is automatically considered as pending.
 
