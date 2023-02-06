@@ -21,7 +21,7 @@
     "winston": "^3.8.2"
   },
   "scripts": {
-    "start-dev": "yarn tsx watch server.ts",
+    "start-dev": "yarn tsx watch src/server.ts",
     "start-dev-cmd": "nodemon bin/swocmd.ts",
     "cmd": "chmod +x ./dist/bin/swocmd.js && ./dist/bin/swocmd.js",
     "docs": "docsify serve ./docs",

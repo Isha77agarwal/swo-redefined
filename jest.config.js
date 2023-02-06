@@ -6,6 +6,7 @@ module.exports = {
         "<rootDir>/node_modules",
         "<rootDir>/repositories",
         "<rootDir>/.github",
+        "<rootDir>/dist"
     ],
     coveragePathIgnorePatterns: [
         "<rootDir>/node_modules",

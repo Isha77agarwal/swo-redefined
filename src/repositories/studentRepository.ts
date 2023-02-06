@@ -14,7 +14,7 @@ export interface StudentRepository {
         year: number,
         session_id: string,
         branch_id?: string,
-    ) => Promise<Student[]>;
+    ) => Promise<StudentWithFreshMTechFellowshipDetail[]>;
 }
 
 export const studentRepository: StudentRepository = {
@@ -52,9 +52,13 @@ export const studentRepository: StudentRepository = {
                     where: {
                         month: month,
                         session_id: session_id
+                    },
+                    select: {
+                        month: true,
+                        session_id: true,
                     }
                 }
-            },
+            }
         });
     },
 };

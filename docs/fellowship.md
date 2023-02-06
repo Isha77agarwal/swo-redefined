@@ -21,7 +21,7 @@ called **Deduction Dates** and are filled during forwarding the fellowship.
 
 ```mermaid
 flowchart TD
-    A[Fellowship Period of elligible students filled by department] --> B[Fellowship details: deduction dates, block period filled by department while forwarding fellowship.];
+    A[Fellowship Period of eligible students filled by department] --> B[Fellowship details: deduction dates, block period filled by department while forwarding fellowship.];
     B --> C[Fellowship forwarded by Departments to Account Section]
     C --> D[Fellowship approved by Account Section]
 ```

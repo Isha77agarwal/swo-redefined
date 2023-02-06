@@ -1,37 +1,34 @@
 abstract class Fellowship {
-    private registration: string;
+    private registration_no: string;
     private readonly month: Month;
     private readonly year: number;
     private semester: number;
-    private deduction_dates: number[];
+    private deduction_dates: Date[];
     private pending_fill: boolean;
     private approved_by_accounts: boolean;
 
-    constructor(
+    protected constructor(
         registration: string,
         month: Month,
         year: number,
         semester: number,
-        deduction_dates: number[],
-        pending_fill: boolean,
-        approved_by_accounts: boolean
     ) {
-        this.registration = registration;
+        this.registration_no = registration;
         this.month = month;
         this.year = year;
         this.semester = semester;
-        this.deduction_dates = deduction_dates;
-        this.pending_fill = pending_fill;
-        this.approved_by_accounts = approved_by_accounts;
+        this.deduction_dates = [];
+        this.pending_fill = false;
+        this.approved_by_accounts = false;
     }
 
-    private isYearLeap(): boolean {
+    protected isYearLeap(): boolean {
         return (
             (this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0
         );
     }
 
-    private getTotalDays(): number {
+    protected getTotalDays(): number {
         switch (this.month) {
             case "April":
             case "June":

@@ -1,3 +1,5 @@
+import {Prisma} from "@prisma/client";
+
 declare global {
     namespace NodeJS {
         export interface ProcessEnv {
@@ -23,6 +25,20 @@ declare global {
         | "December";
 
     export type ProgramType = "BTech" | "MTech" | "PhD";
+
+    // studentRepository types
+    export type StudentWithFreshMTechFellowshipDetail = Prisma.StudentGetPayload<{
+        include: {
+            Result: true,
+            FellowshipBlock: true,
+            MTechFellowship: {
+                select: {
+                    month: true,
+                    session_id: true,
+                }
+            },
+        },
+    }>;
 }
 
 declare module "express-session" {

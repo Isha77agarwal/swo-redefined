@@ -5,9 +5,11 @@ import cookieParser from "cookie-parser";
 import winston from "winston";
 import expressWinston from "express-winston";
 
-import rootRouter from "./src/routes/rootRouter";
-import userRouter from "./src/routes/userRouter";
+import rootRouter from "./routes/rootRouter";
+import userRouter from "./routes/userRouter";
 import path from "path";
+import {MTechFellowshipService} from "./services/mtechFellowshipService";
+import {studentRepository} from "./repositories/studentRepository";
 
 // put .env file variables in process.env
 dotenv.config();
@@ -30,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: sessionSecret!, // DO NOT REMOVE THIS NULL CHECK ELSE TS THROWS ERRORS.
+    secret: sessionSecret ?? "sessionSecret",
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // one day
@@ -72,4 +74,6 @@ app.use("/users/", userRouter);
 
 app.listen(port, () => {
   console.log(`[SUCCESS] Server is running on http://localhost:${port}`);
+  const mTechFellowshipService = new MTechFellowshipService(studentRepository);
+  mTechFellowshipService.getFreshMTechFellowship("TEST_DEPT", "January", 2023, "2020-21");
 });
