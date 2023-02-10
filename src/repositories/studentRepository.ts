@@ -6,8 +6,26 @@ import { Student } from "@prisma/client";
  * persistent storage.
  */
 export interface StudentRepository {
+
+    /**
+     * returns unique student from Student table given registration number.
+     * @param registration
+     */
     getStudentByRegistration: (registration: string) => Promise<Student | null>;
 
+    /**
+     * returns student data along with data from MTechFellowship,
+     * FellowshipBlock and Result tables.
+     *
+     * It filters data based on department_id, month, year, session_id and
+     * branch_id and only considers those records who have an associated
+     * AcademicInformation and FinancialInformation record.
+     * @param department_id
+     * @param month
+     * @param year
+     * @param session_id
+     * @param branch_id
+     */
     getMTechStudentsWithFellowshipByFilter: (
         department_id: string,
         month: Month,
@@ -17,6 +35,7 @@ export interface StudentRepository {
     ) => Promise<StudentWithFreshMTechFellowshipDetail[]>;
 }
 
+// default implementation of StudentRepository
 export const studentRepository: StudentRepository = {
     getStudentByRegistration: (registration: string) => {
         return client.student.findUnique({
@@ -53,10 +72,6 @@ export const studentRepository: StudentRepository = {
                         month: month,
                         session_id: session_id
                     },
-                    select: {
-                        month: true,
-                        session_id: true,
-                    }
                 }
             }
         });

@@ -1,5 +1,8 @@
 import {Prisma} from "@prisma/client";
 
+// this file includes type declarations.
+// if you want to add any new type add it here under
+// global namespace.
 declare global {
     namespace NodeJS {
         export interface ProcessEnv {
@@ -26,17 +29,17 @@ declare global {
 
     export type ProgramType = "BTech" | "MTech" | "PhD";
 
+    export type Result = {
+        semester: number;
+        passed: boolean;
+    }
+
     // studentRepository types
     export type StudentWithFreshMTechFellowshipDetail = Prisma.StudentGetPayload<{
         include: {
             Result: true,
             FellowshipBlock: true,
-            MTechFellowship: {
-                select: {
-                    month: true,
-                    session_id: true,
-                }
-            },
+            MTechFellowship: true,
         },
     }>;
 }

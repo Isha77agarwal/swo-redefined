@@ -172,42 +172,46 @@ model StudentResult {
 }
 
 model MTechFellowship {
-    student              Student    @relation(fields: [registration_no], references: [registration_no])
-    department           Department @relation(fields: [department_id], references: [id])
-    branch               Branch     @relation(fields: [branch_id], references: [id])
-    session              Session    @relation(fields: [session_id], references: [id])
-    month                Month
-    stipend              Int
-    approved_by_accounts Boolean    @default(false)
-    pending_fill         Boolean    @default(false)
-    semester             Int
-    deductions           Int
-    deduction_dates      Json
-    session_id           String
-    branch_id            String
-    department_id        String
-    registration_no      String
+    student               Student    @relation(fields: [registration_no], references: [registration_no])
+    department            Department @relation(fields: [department_id], references: [id])
+    branch                Branch     @relation(fields: [branch_id], references: [id])
+    session               Session    @relation(fields: [session_id], references: [id])
+    month                 Month
+    year                  Int
+    stipend               Int
+    approved_by_accounts  Boolean    @default(false)
+    pending_fill          Boolean    @default(false)
+    forwarded_to_accounts Boolean    @default(false)
+    semester              Int
+    deductions            Int
+    deduction_dates       Json
+    session_id            String
+    branch_id             String
+    department_id         String
+    registration_no       String
 
     @@id([registration_no, semester, month])
 }
 
 model PhDFellowship {
-    student              Student    @relation(fields: [registration_no], references: [registration_no])
-    department           Department @relation(fields: [department_id], references: [id])
-    branch               Branch     @relation(fields: [branch_id], references: [id])
-    session              Session    @relation(fields: [session_id], references: [id])
-    month                Month
-    stipend              Int
-    approved_by_accounts Boolean
-    pending_fill         Boolean
-    semester             Int
-    deductions           Int
-    deduction_dates      Json
-    hra                  Int
-    session_id           String
-    branch_id            String
-    department_id        String
-    registration_no      String
+    student               Student    @relation(fields: [registration_no], references: [registration_no])
+    department            Department @relation(fields: [department_id], references: [id])
+    branch                Branch     @relation(fields: [branch_id], references: [id])
+    session               Session    @relation(fields: [session_id], references: [id])
+    month                 Month
+    stipend               Int
+    year                  Int
+    approved_by_accounts  Boolean    @default(false)
+    pending_fill          Boolean    @default(false)
+    forwarded_to_accounts Boolean    @default(false)
+    semester              Int
+    deductions            Int
+    deduction_dates       Json
+    hra                   Int
+    session_id            String
+    branch_id             String
+    department_id         String
+    registration_no       String
 
     @@id([registration_no, session_id, month])
 }
