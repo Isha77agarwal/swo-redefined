@@ -188,6 +188,17 @@ export default function createStudentRepositoryMock(): StudentRepository {
                     MTechFellowship: [{
                         month: month,
                         session_id: `${year%100}-${year+1}`,
+                        year: year,
+                        stipend: 15000,
+                        approved_by_accounts: true,
+                        pending_fill: false,
+                        forwarded_to_accounts: true,
+                        semester: 2,
+                        deductions: 0,
+                        deduction_dates: {},
+                        branch_id: "TEST_BRANCH",
+                        department_id: "TEST_DEPT",
+                        registration_no: "TEST_REG_06"
                     }],
                 },
                 // old student not eligible

@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@prisma/client": "4.5.0",
+    "@prisma/client": "^4.9.0",
     "bootstrap": "^5.2.3",
     "chalk": "^5.2.0",
     "clear": "^0.1.0",

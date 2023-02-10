@@ -1,35 +1,193 @@
+/**
+ * Fellowship class is used to represent both MTech and PhD fellowships.
+ * @abstract
+ */
 abstract class Fellowship {
-    private registration_no: string;
-    private readonly month: Month;
-    private readonly year: number;
-    private semester: number;
-    private deduction_dates: Date[];
-    private pending_fill: boolean;
-    private approved_by_accounts: boolean;
+    /**
+     * registration number of student eg : 2020CA021
+     * the first part of registration number([2020]CA021) is the year of admission
+     * the second part(2020[CA]021) is the department or branch code
+     * the last part is the roll / serial number (2020CA[021])
+     * @protected
+     */
+    protected readonly _registration_no: string;
+
+    /**
+     * represents the month for which this fellowship has been awarded
+     * @protected
+     */
+    protected readonly _month: Month;
+
+    /**
+     * represents the year for which this fellowship has been awarded
+     * @protected
+     */
+    protected readonly _year: number;
+
+    /**
+     * represents the semester of student for which this fellowship has been awarded
+     * @protected
+     */
+    protected readonly _semester: number;
+
+    /**
+     * represents the session for which this fellowship has been awarded
+     * the session is represented as the current year and the last two digits
+     * of next year
+     *
+     * e.g. 2020-21
+     * @protected
+     */
+    protected readonly _session: string;
 
     protected constructor(
         registration: string,
         month: Month,
         year: number,
         semester: number,
+        session: string
     ) {
-        this.registration_no = registration;
-        this.month = month;
-        this.year = year;
-        this.semester = semester;
-        this.deduction_dates = [];
-        this.pending_fill = false;
-        this.approved_by_accounts = false;
+        this._registration_no = registration;
+        this._month = month;
+        this._year = year;
+        this._semester = semester;
+        this._deduction_dates = [];
+        this._pending_fill = false;
+        this._approved_by_accounts = false;
+        this._deduction_amount = 0;
+        this._forwarded_to_accounts = false;
+        this._stipend = 0;
+        this._session = session;
     }
 
+    get registration_no(): string {
+        return this._registration_no;
+    }
+
+    get semester(): number {
+        return this._semester;
+    }
+
+    get session(): string {
+        return this._session;
+    }
+
+    /**
+     * amount to be deducted from stipend based on deduction dates.
+     * @protected
+     */
+    protected _deduction_amount: number;
+
+    get deduction_amount(): number {
+        return this._deduction_amount;
+    }
+
+    set deduction_amount(value: number) {
+        this._deduction_amount = value;
+    }
+
+    /**
+     * represents if fellowship has been sent to account section after filling.
+     * @protected
+     */
+    protected _forwarded_to_accounts: boolean;
+
+    get forwarded_to_accounts(): boolean {
+        return this._forwarded_to_accounts;
+    }
+
+    set forwarded_to_accounts(value: boolean) {
+        this._forwarded_to_accounts = value;
+    }
+
+    /**
+     * amount associated with fellowship
+     * @protected
+     */
+    protected _stipend: number;
+
+    get stipend(): number {
+        return this._stipend;
+    }
+
+    set stipend(value: number) {
+        this._stipend = value;
+    }
+
+    /**
+     * represents dates during which fellowship is not to be awarded.
+     * @protected
+     */
+    protected _deduction_dates: Date[];
+
+    get deduction_dates(): Date[] {
+        return this._deduction_dates;
+    }
+
+    set deduction_dates(value: Date[]) {
+        this._deduction_dates = value;
+    }
+
+    /**
+     * set to true if fellowship has been filled in pending mode.
+     * @protected
+     */
+    protected _pending_fill: boolean;
+
+    get pending_fill(): boolean {
+        return this._pending_fill;
+    }
+
+    set pending_fill(value: boolean) {
+        this._pending_fill = value;
+    }
+
+    /**
+     * set to true if fellowship has been processed and forwarded by account
+     * section and will be credited to student's account
+     * @protected
+     */
+    protected _approved_by_accounts: boolean;
+
+    get approved_by_accounts(): boolean {
+        return this._approved_by_accounts;
+    }
+
+    set approved_by_accounts(value: boolean) {
+        this._approved_by_accounts = value;
+    }
+
+    get month(): Month {
+        return this._month;
+    }
+
+    get year(): number {
+        return this._year;
+    }
+
+    /**
+     * calculates this fellowship's stipend amount.
+     * @abstract
+     */
+    abstract calculateFellowship(): number;
+
+    /**
+     * returns true if the year is a leap year.
+     * @protected
+     */
     protected isYearLeap(): boolean {
         return (
-            (this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0
+            (this._year % 4 == 0 && this._year % 100 != 0) ||
+            this._year % 400 == 0
         );
     }
 
+    /**
+     * returns total days in the month
+     * @protected
+     */
     protected getTotalDays(): number {
-        switch (this.month) {
+        switch (this._month) {
             case "April":
             case "June":
             case "September":
@@ -41,8 +199,6 @@ abstract class Fellowship {
                 return 31;
         }
     }
-
-    abstract calculateFellowship(): number;
 }
 
 export default Fellowship;
