@@ -55,10 +55,29 @@ Improved web portal for the Student Welfare Office, MNNIT Allhabad.
 [Docsify.js](https://docsify.js.org) is used to create documentation for the website. It is hosted on
 GitHub pages and can be browsed [here]()
 
+To run a local copy of the database you will need to install docsify using the command
+```shell
+yarn global add docsify-cli
+```
+or 
+```shell
+npm install docsify-cli -g
+```
+
+After installing, run the following command to start the documentation server.
+```shell
+docsify serve ./docs
+```
+
 ## Contributing
 
-- pull the main branch
-- create and checkout a new branch
-- make changes
-- commit and push changes
-- create a pull request
+- Follow the installation steps.
+- Clone the `dev` repository or your team repository and create and checkout a new branch. Use combination of issue name and your name to create a new branch.
+```shell
+git checkout -b [branch name]
+```
+- Make your changes and push the changes to GitHub.
+```shell
+git push origin [branch name]
+```
+- Create pull request from GitHub.

@@ -15,7 +15,10 @@ can have different fellowship block period which can range from weeks to months.
 Further, there might be some individual dates in the month for which fellowship must be deducted. These are 
 called **Deduction Dates** and are filled during forwarding the fellowship.
 
-!>Fellowship must be calculated exactly from the start date to the presentation date.
+Every month fellowship portal is opened from 21st to 25th of the month for filling up of fresh fellowships called the 
+**Fresh Period** and from 5th to 20th for filling up of pending fellowships called **Pending Period**.
+
+!>Fellowship must be calculated exactly from the start date to the presentation date or end of fellowship date whichever is earlier.
 
 ## Fellowship Timeline
 
