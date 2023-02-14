@@ -61,11 +61,6 @@ class MTechStudent extends Student {
         );
     }
 
-    calculateFellowshipAmount(fellowship: Fellowship): number {
-        fellowship.calculateFellowship();
-        return 0;
-    }
-
     /**
      * Returns true if the student is eligible for fresh fellowship for month
      * and year.
@@ -76,13 +71,11 @@ class MTechStudent extends Student {
         const current_date = new Date(
             year,
             getMonthIndex(month),
-            new Date().getDay()
+            new Date().getDate()
         );
 
         // checking period
         if (!this.dateInFellowshipPeriod(current_date)) {
-            // TODO implement this.
-            // if (!this.isPartOfPeriodInMonth(current_date)) return false;
             return false;
         }
 
@@ -111,26 +104,20 @@ class MTechStudent extends Student {
         )
             return false;
 
-        // fellowship period has ended.
-        if (this._fellowship_end !== undefined && this._fellowship_end < date)
-            return false;
+        if (this._fellowship_end !== undefined) {
+            // fellowship period has not ended.
+            if(this._fellowship_end >= date)
+                return true;
+            // ending date not in current fresh fellowship filling period
+            if(!this.isDateInPeriodForMonth(date, this._fellowship_end))
+                return false;
+        }
 
         // presentation date is defined and has passed.
         return !(
             this._presentation_date !== undefined &&
             this._presentation_date < date
         );
-    }
-
-    /**
-     * Checks if some part fellowship period at the end is present in the current
-     * fellowship filling cycle.
-     * @param date
-     * @private
-     */
-    private isPartOfPeriodInMonth(date: Date): boolean {
-        // TODO implement
-        return true;
     }
 }
 

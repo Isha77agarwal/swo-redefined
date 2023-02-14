@@ -17,7 +17,7 @@ describe("MTechFellowshipService", () => {
     describe("getAllFreshMTechFellowship", () => {
         it("should return fresh fellowship of all eligible MTech Students of all months and year.", async function () {
 
-            const valid_fellowship_reg_no = ["TEST_REG_01", "TEST_REG_05"];
+            const valid_fellowship_reg_no = ["TEST_REG_01", "TEST_REG_05", "TEST_REG_08"];
             const invalid_fellowship_reg_no = ["TEST_REG_02", "TEST_REG_03", "TEST_REG_04", "TEST_REG_06", "TEST_REG_07"];
 
             const testMTechFellowships =
@@ -27,8 +27,6 @@ describe("MTechFellowshipService", () => {
                     2023,
                     "2020-21"
                 );
-
-            console.log(testMTechFellowships);
 
             expect(testMTechFellowships).not.toBeNull();
             expect(testMTechFellowships.length).not.toBe(0);

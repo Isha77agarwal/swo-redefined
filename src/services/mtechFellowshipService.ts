@@ -1,4 +1,4 @@
-import { StudentRepository } from "../repositories/studentRepository";
+import { studentRepository, StudentRepository } from "../repositories/studentRepository";
 import MTechFellowship from "../entities/fellowship/MTechFellowship";
 import appConfig from "../appConfig";
 
@@ -48,3 +48,8 @@ export class MTechFellowshipService {
         return fellowships;
     }
 }
+
+// default implementation of MTechFellowshipService class
+const mtechFellowshipService = new MTechFellowshipService(studentRepository);
+
+export default mtechFellowshipService;

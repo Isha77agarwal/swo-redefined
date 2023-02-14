@@ -6,6 +6,9 @@ Fellowship are grants or stipend awarded to Master's and Doctorate students on a
 Fellowship are awarded over a particular period of the student's academic years called fellowship period. 
 It starts with enrolling the student into the fellowship program and ends with presentation.
 
+The duration for which fellowship is paid for is called **Fellowship Duration**. It is from 21st of previous month
+to 20th of current month.
+
 The time period for which fellowship is granted is termed as **Fellowship Period.** 
 
 There might be some time period when fellowships are not granted. This time period is called the **Fellowship Block Period**. Each student

@@ -34,6 +34,10 @@ declare global {
         passed: boolean;
     }
 
+    export type DepartmentSession = {
+        id: string,
+    };
+
     // studentRepository types
     export type StudentWithFreshMTechFellowshipDetail = Prisma.StudentGetPayload<{
         include: {
@@ -46,7 +50,7 @@ declare global {
 
 declare module "express-session" {
     export interface SessionData {
-        department: Department;
+        department: DepartmentSession;
     }
 }
 
