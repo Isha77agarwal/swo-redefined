@@ -7,6 +7,7 @@
   * [ER Diagram](documentation/er.md)
   * [Entities](documentation/entities/README.md)
     * [Student Entities](documentation/entities/student/README.md)
+      * [_Student_](documentation/entities/student/student.md)
     * [Fellowship Entities](documentation/entities/fellowship/README.md)
       * [_Fellowship_](documentation/entities/fellowship/fellowship.md)
       * [MTechFellowship](documentation/entities/fellowship/mtech_fellowship.md)
