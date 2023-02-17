@@ -26,11 +26,20 @@ export class AuthService {
         if (student === null) {
             throw new Error(AuthService.USER_NOT_EXISTS_ERROR);
         }
-        await AuthService.verifyPassword(
-            student.password,
-            password,
-            student.salt
-        );
+        else{
+            let val = String(student.password);
+            if(val != password)
+            {
+                throw new Error(AuthService.PASSWORD_ERROR);
+            }
+
+        }
+
+        // await AuthService.verifyPassword(
+        //     student.password,
+        //     password,
+        //     student.salt
+        // );
     }
 
     protected static readonly verifyPassword = async (

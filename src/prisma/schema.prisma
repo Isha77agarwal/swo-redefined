@@ -57,14 +57,14 @@ enum PeriodType {
 
 model Admin {
     username       String      @id
-    password       Bytes
+    password       String
     name           String
     email          String
     mobile         String
     is_super_admin Boolean
-    salt           Bytes
-    token          String?
-    Department     Department?
+    salt           String
+   token          String?
+   Department     Department?
 }
 
 model Department {
@@ -139,9 +139,9 @@ model Student {
     branch               Branch?               @relation(fields: [branch_id], references: [id])
     program_type         ProgramType
     session              Session               @relation(fields: [session_id], references: [id])
-    semester             Int
-    password             Bytes
-    salt                 Bytes
+    semester             String
+    password             String
+    salt                 Int
     presentation_date    DateTime?
     JRF_start_date       DateTime?
     JRF_end_date         DateTime?
