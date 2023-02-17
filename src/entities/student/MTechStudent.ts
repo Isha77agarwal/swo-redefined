@@ -45,15 +45,18 @@ class MTechStudent extends Student {
      * @param year
      */
     getFreshFellowship(month: Month, year: number): Fellowship {
-        for (const fellowship of this._fellowships) {
-            if (fellowship.month === month && fellowship.year === year)
-                return fellowship;
-        }
+        // check is student is eligible for fellowship or not
         if (!this.isEligibleForFresh(month, year)) {
             throw new StudentNotEligibleError(
                 MTechStudent.NOT_ELIGIBLE_FOR_FRESH_ERR
             );
         }
+        for (const fellowship of this._fellowships) {
+            if (fellowship.month === month && fellowship.year === year)
+                return fellowship;
+        }
+        // if fellowship is not found in _fellowships create a default
+        // fellowship
         return appConfig.MTechFellowshipFactory.createFreshFellowship(
             this,
             month,

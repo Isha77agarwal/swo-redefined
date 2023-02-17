@@ -22,6 +22,7 @@ class MTechFellowship extends Fellowship {
      */
     calculateFellowship(): number {
         this.getTotalDays();
+        this.isYearLeap();
         return 0;
     }
 }

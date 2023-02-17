@@ -1,4 +1,4 @@
-# SWO Portal Redefined
+[# SWO Portal Redefined
 
 Improved web portal for the Student Welfare Office, MNNIT Allhabad.
 
@@ -10,6 +10,14 @@ Improved web portal for the Student Welfare Office, MNNIT Allhabad.
 - [NPM](https://www.npmjs.com) or [Yarn](https://yarnpkg.com) package managers.
 - [Docker](https://www.docker.com) for database or a local copy of [MariaDB](https://mariadb.org/download/) or [MySQL](https://www.mysql.com/downloads/)
 - IDE like [Visual Studio Code](https://code.visualstudio.com/download) or [JetBrains](https://www.jetbrains.com/webstorm/download/)
+
+### Optional Proxy Setting
+- If you have to use proxy you need to configure your IDE, Docker, git and terminal to use proxy.
+- [Proxy Setup in VSCode](https://code.visualstudio.com/docs/setup/network#_proxy-server-support)
+- [Intellij Proxy Setup](https://www.jetbrains.com/help/idea/settings-http-proxy.html)
+- [Docker Proxy Setup](https://docs.docker.com/network/proxy/)
+- [Git Proxy Setup](https://gist.github.com/evantoli/f8c23a37eb3558ab8765)
+- Search for your OS to set up proxy in terminal.
 
 ### Setting up the project
 
@@ -26,6 +34,11 @@ Improved web portal for the Student Welfare Office, MNNIT Allhabad.
   ```
   npm install
   ```
+
+- (Optional) Installation with docker:
+  - Install Docker.
+  - Run ```docker-compose up``` from the terminal in the project directory.
+
 - Create a `.env` file in the root folder (where server.ts resides) and add the following properties in it:
   ```shell
     PORT=3001
@@ -80,4 +93,4 @@ git checkout -b [branch name]
 ```shell
 git push origin [branch name]
 ```
-- Create pull request from GitHub.
+- Create pull request from GitHub.]()
