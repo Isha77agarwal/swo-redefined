@@ -112,7 +112,7 @@ class MTechStudent extends Student {
             if(this._fellowship_end >= date)
                 return true;
             // ending date not in current fresh fellowship filling period
-            if(!this.isDateInPeriodForMonth(date, this._fellowship_end))
+            if(!Fellowship.isDateInPeriodForMonth(date, this._fellowship_end))
                 return false;
         }
 

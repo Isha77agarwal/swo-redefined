@@ -28,9 +28,6 @@ abstract class Student {
 
     protected isFellowshipAwarded(month: Month, year: number): boolean {
     }
-
-    protected isDateInPeriodForMonth(month: Date, date: Date): boolean {
-    }
 }
 ```
 
@@ -56,8 +53,6 @@ abstract class Student {
 | _getFreshFellowship_   | Fellowship  | returns fresh fellowship for given month and year if eligible else error is thrown                                          |
 | passedInSemester       | boolean     | returns true if student has passed in the given semester                                                                    |
 | isFellowshipAwarded    | boolean     | returns true if fellowship has already been awarded to student for given month and year                                     |
-| isDateInPeriodForMonth | boolean     | returns true if given date falls between fellowship payment period i.e 21st of the previous month to 20th of current month. |
-
 
 ### getters
 

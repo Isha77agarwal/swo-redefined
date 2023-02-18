@@ -133,9 +133,7 @@ describe("MTechStudent", () => {
                 MTechStudent.prototype,
                 "isEligibleForFresh"
             );
-            mockIsEligibleForFresh.mockImplementation(
-                () => true
-            );
+            mockIsEligibleForFresh.mockImplementation(() => true);
 
             const fellowship = student.getFreshFellowship("January", 2023);
             expect(fellowship.month).toBe("January");
@@ -151,13 +149,111 @@ describe("MTechStudent", () => {
                 MTechStudent.prototype,
                 "isEligibleForFresh"
             );
-            mockIsEligibleForFresh.mockImplementation(
-                () => false
-            );
+            mockIsEligibleForFresh.mockImplementation(() => false);
 
             expect(() => student.getFreshFellowship("January", 2023)).toThrow(
                 MTechStudent.NOT_ELIGIBLE_FOR_FRESH_ERR
             );
+        });
+    });
+
+    // tests related to isFellowshipAwarded method
+    describe("isFellowshipAwarded tests.", () => {
+        let student: TestMTechStudent;
+
+        /*
+         * since isFellowshipAwarded is a protected member we use a
+         * wrapper function to access it and return its value from a
+         * test class.
+         */
+        class TestMTechStudent extends MTechStudent {
+            isFellowshipAwardedWrapper(month: Month, year: number) {
+                return this.isFellowshipAwarded(month, year);
+            }
+        }
+
+        beforeAll(() => {
+            student = new TestMTechStudent(
+                "TEST_MTECH",
+                "TEST_DEPT",
+                "TEST_BRANCH",
+                3,
+                "2022-23"
+            );
+        });
+
+        it("should return false if fellowship not present for month and year.", function () {
+            expect(
+                student.isFellowshipAwardedWrapper("January", 2023)
+            ).toBeFalsy();
+        });
+
+        it("should return true when fellowship was filled/forwarded in fresh mode.", function () {
+            const mTechFellowship = new MTechFellowship(
+                student.registration_no,
+                "January",
+                2023,
+                1,
+                "2022-23"
+            );
+            mTechFellowship.forwarded_to_accounts = true;
+            mTechFellowship.pending_fill = false;
+            student.fellowships = [mTechFellowship];
+            expect(
+                student.isFellowshipAwardedWrapper("January", 2023)
+            ).toBeTruthy();
+            student.fellowships = [];
+        });
+
+        it("should return true when fellowship has been filled/forwarded in pending mode.", function () {
+            const mTechFellowship = new MTechFellowship(
+                student.registration_no,
+                "January",
+                2023,
+                1,
+                "2022-23"
+            );
+            mTechFellowship.forwarded_to_accounts = true;
+            mTechFellowship.pending_fill = true;
+            student.fellowships = [mTechFellowship];
+            expect(
+                student.isFellowshipAwardedWrapper("January", 2023)
+            ).toBeTruthy();
+            student.fellowships = [];
+        });
+
+        it("should return false when student fellowship has saved in fresh mode", function () {
+            const mTechFellowship = new MTechFellowship(
+                student.registration_no,
+                "January",
+                2023,
+                1,
+                "2022-23"
+            );
+            mTechFellowship.forwarded_to_accounts = false;
+            mTechFellowship.pending_fill = false;
+            student.fellowships = [mTechFellowship];
+            expect(
+                student.isFellowshipAwardedWrapper("January", 2023)
+            ).toBeFalsy();
+            student.fellowships = [];
+        });
+
+        it("should return false when student fellowship has saved in pending mode", function () {
+            const mTechFellowship = new MTechFellowship(
+                student.registration_no,
+                "January",
+                2023,
+                1,
+                "2022-23"
+            );
+            mTechFellowship.forwarded_to_accounts = false;
+            mTechFellowship.pending_fill = true;
+            student.fellowships = [mTechFellowship];
+            expect(
+                student.isFellowshipAwardedWrapper("January", 2023)
+            ).toBeFalsy();
+            student.fellowships = [];
         });
     });
 });

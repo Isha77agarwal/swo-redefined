@@ -1,3 +1,5 @@
+import { getMonthFromIndex, getMonthIndex, getPreviousMonth } from "../../util/dateUtil";
+
 /**
  * Fellowship class is used to represent both MTech and PhD fellowships.
  * @abstract
@@ -199,6 +201,22 @@ abstract class Fellowship {
                 return 31;
         }
     }
+
+    /**
+     * Checks if date is in the fellowship filling cycle of month.
+     * @param month month from date object for which period will be considered
+     * @param date date which has to be checked if it belongs in period
+     */
+    static isDateInPeriodForMonth(month: Date, date: Date): boolean {
+        const curr_year = month.getFullYear();
+        const prev_year = month.getMonth() == 0 ? curr_year - 1 : curr_year;
+        const prev_month = getMonthIndex(getPreviousMonth(getMonthFromIndex(month.getMonth())));
+        const curr_month = month.getMonth();
+        const duration_start = new Date(prev_year, prev_month, 21);
+        const duration_end = new Date(curr_year, curr_month, 20);
+        return duration_start <= date && date <= duration_end;
+    }
+
 }
 
 export default Fellowship;

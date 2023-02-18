@@ -1,5 +1,4 @@
 import Fellowship from "../fellowship/Fellowship";
-import { getMonthFromIndex, getMonthIndex, getPreviousMonth } from "../../util/dateUtil";
 
 /**
  * Student is used to represent common data and business logic related to
@@ -188,22 +187,6 @@ abstract class Student {
             }
         }
         return false;
-    }
-
-    /**
-     * Checks if date is in the fellowship filling cycle of month.
-     * @param month date object for which period will be created
-     * @param date fellowship end date.
-     * @private
-     */
-    protected isDateInPeriodForMonth(month: Date, date: Date): boolean {
-        const curr_year = month.getFullYear();
-        const prev_year = month.getMonth() == 0 ? curr_year - 1 : curr_year;
-        const prev_month = getMonthIndex(getPreviousMonth(getMonthFromIndex(month.getMonth())));
-        const curr_month = month.getMonth();
-        const duration_start = new Date(prev_year, prev_month, 21);
-        const duration_end = new Date(curr_year, curr_month, 20);
-        return duration_start <= date && date <= duration_end;
     }
 }
 

@@ -30,6 +30,8 @@ abstract class Fellowship {
     protected isYearLeap(): boolean { }
 
     protected getTotalDays(): number { }
+
+    static isDateInPeriodForMonth(month: Date, date: Date): boolean {}
 }
 ```
 
@@ -49,12 +51,12 @@ abstract class Fellowship {
 
 ### methods
 
-| name                  | return type | comment                                                                |
-|-----------------------|-------------|------------------------------------------------------------------------|
-| isYearLeap            | boolean     | returns true if the year property is a leap year                       |
-| getTotalDays          | number      | returns total days in the month specified by month property            |
-| _calculateFellowship_ | number      | abstract method that returns total amount for specified month and year |
-
+| name                   | return type | comment                                                                                                                     |
+|------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------|
+| isYearLeap             | boolean     | returns true if the year property is a leap year                                                                            |
+| getTotalDays           | number      | returns total days in the month specified by month property                                                                 |
+| _calculateFellowship_  | number      | abstract method that returns total amount for specified month and year                                                      |
+| isDateInPeriodForMonth | boolean     | returns true if given date falls between fellowship payment period i.e 21st of the previous month to 20th of current month. |
 ### getters
 
 | name                  | property               |
