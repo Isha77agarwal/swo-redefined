@@ -43,7 +43,7 @@ export class MTechFellowshipService {
             if(!student.isEligibleForFresh(month, year)) {
                 continue;
             }
-            fellowships.push(student.getFreshFellowship(month, year));
+            fellowships.push(student.getFreshFellowship(month, year) as MTechFellowship);
         }
         return fellowships;
     }

@@ -38,6 +38,11 @@ declare global {
         id: string,
     };
 
+    export type MTechStipend = {
+        start_date: Date;
+        amount: number;
+    }
+
     // studentRepository types
     export type StudentWithFreshMTechFellowshipDetail = Prisma.StudentGetPayload<{
         include: {

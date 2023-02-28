@@ -90,3 +90,31 @@ export const getNextMonth = (month: Month, n = 1): Month => {
     index %= 12;
     return getMonthFromIndex(index);
 };
+
+export const isYearLeap = (year: number): boolean => {
+    return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+};
+
+/**
+ * returns number of days in a month from index
+ */
+export const daysInMonthIndex = (month: number, year: number): number => {
+    return daysInMonth(getMonthFromIndex(month), year);
+};
+
+/**
+ * returns number of days in a month from Month
+ */
+export const daysInMonth = (month: Month, year: number): number => {
+    switch (month) {
+        case "April":
+        case "June":
+        case "September":
+        case "November":
+            return 30;
+        case "February":
+            return isYearLeap(year) ? 29 : 28;
+        default:
+            return 31;
+    }
+};

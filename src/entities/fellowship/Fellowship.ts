@@ -174,35 +174,6 @@ abstract class Fellowship {
     abstract calculateFellowship(): number;
 
     /**
-     * returns true if the year is a leap year.
-     * @protected
-     */
-    protected isYearLeap(): boolean {
-        return (
-            (this._year % 4 == 0 && this._year % 100 != 0) ||
-            this._year % 400 == 0
-        );
-    }
-
-    /**
-     * returns total days in the month
-     * @protected
-     */
-    protected getTotalDays(): number {
-        switch (this._month) {
-            case "April":
-            case "June":
-            case "September":
-            case "November":
-                return 30;
-            case "February":
-                return this.isYearLeap() ? 29 : 28;
-            default:
-                return 31;
-        }
-    }
-
-    /**
      * Checks if date is in the fellowship filling cycle of month.
      * @param month month from date object for which period will be considered
      * @param date date which has to be checked if it belongs in period

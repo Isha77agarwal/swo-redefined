@@ -23,7 +23,7 @@ VALUES ('2020-21',
 
 -- INSERT PhD STUDENT DATA
 INSERT INTO Student
-VALUES ('TEST_REG', 'PhD', 1, NULL, NULL, NULL, NULL, NULL, (SELECT id FROM Session WHERE id = '2020-21'),
+VALUES ('TEST_REG_PHD', 'PhD', 1, NULL, NULL, NULL, NULL, NULL, (SELECT id FROM Session WHERE id = '2020-21'),
         (SELECT id FROM Branch WHERE id = 'TEST_DEPT_TEST_BRANCH'),
         (SELECT id FROM Department WHERE id = 'TEST_DEPT'),
         'TEST_PASSWORD',
@@ -38,15 +38,20 @@ VALUES ('TEST_REG_MTECH', 'MTech', 1, NULL, NULL, NULL, NULL, NULL, (SELECT id F
         'TEST_SALT');
 
 -- INSERT ACADEMIC INFORMATION
+INSERT INTO AcademicInformation (registration_no, category, religion, nationality, email, date_of_birth, father_name,
+                                 aadhar, alloted_category, gender, guardian_mobile, guardian_name, mobile, mother_name,
+                                 permanent_address, photograph, present_address)
+VALUES ('TEST_REG_PHD', 'OBC', 'Atheist', 'INDIAN', 'teststudent@test.com', DATE('1995-01-01'),
+        'TEST_FATHER', 'AADHAR', 'OBC', 'MALE', '1234567890', 'TEST_GUARDIAN', '9876543210', 'TEST_MOTHER',
+        'PRESENT_ADDRESS', 'PHOTO', 'PERMANENT_ADDRESS');
+
 INSERT INTO AcademicInformation
-VALUES ('TEST_REG', 'OBC', 'Atheist', 'INDIAN', 'teststudent@test.com', 'TEST_PASSWORD', DATE('1995-01-01'),
-        'TEST_FATHER');
-INSERT INTO AcademicInformation
-VALUES ('TEST_REG_MTECH', 'OBC', 'Atheist', 'INDIAN', 'teststudent@test.com', 'TEST_PASSWORD', DATE('1995-01-01'),
-        'TEST_FATHER');
+VALUES ('TEST_REG_MTECH', 'OBC', 'Atheist', 'INDIAN', 'teststudent@test.com', DATE('1995-01-01'),
+        'TEST_FATHER', 'AADHAR', 'OBC', 'MALE', '1234567890', 'TEST_GUARDIAN', '9876543210', 'TEST_MOTHER',
+        'PRESENT_ADDRESS', 'PHOTO', 'PERMANENT_ADDRESS');
 
 -- INSERT INTO FINANCIAL INFORMATION
 INSERT INTO FinancialInformation
-VALUES ('TEST_REG', 'TEST_BANK', 'TEST_ACC', 'TEST_IFSC', 'TEST_BRANCH');
+VALUES ('TEST_REG_PHD', 'TEST_BANK', 'TEST_ACC', 'TEST_IFSC', 'TEST_BRANCH');
 INSERT INTO FinancialInformation
 VALUES ('TEST_REG_MTECH', 'TEST_BANK', 'TEST_ACC', 'TEST_IFSC', 'TEST_BRANCH');
