@@ -8,8 +8,6 @@ import expressWinston from "express-winston";
 import rootRouter from "./routes/rootRouter";
 import userRouter from "./routes/userRouter";
 import path from "path";
-import {MTechFellowshipService} from "./services/mtechFellowshipService";
-import {studentRepository} from "./repositories/studentRepository";
 
 // put .env file variables in process.env
 dotenv.config();
@@ -25,9 +23,9 @@ app.set("views", path.join(__dirname, "/ui"));
 // setting up middlewares
 app.use(express.json());
 app.use(express.static(__dirname + "/ui"));
-app.use("/bootstrap", express.static(__dirname + "/node_modules/bootstrap/dist"));
-app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist"));
-app.use("/ui/media", express.static(__dirname + "/ui/media"));
+app.use(express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
+app.use("/bootstrap", express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
+app.use("/src/ui/media", express.static(__dirname + "/ui/media"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
@@ -74,6 +72,4 @@ app.use("/users/", userRouter);
 
 app.listen(port, () => {
   console.log(`[SUCCESS] Server is running on http://localhost:${port}`);
-  const mTechFellowshipService = new MTechFellowshipService(studentRepository);
-  mTechFellowshipService.getFreshMTechFellowship("TEST_DEPT", "January", 2023, "2020-21");
 });
