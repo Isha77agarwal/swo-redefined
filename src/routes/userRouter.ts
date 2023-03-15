@@ -26,7 +26,7 @@ router.post("/login/:role", async (req, res) => {
 
     try {
         if (role === "department") {
-            await userService.loginDepartment(username, password);
+            await userService.loginDepartmentAdmin(username, password);
         } else {
             await userService.loginStudent(username, password);
         }

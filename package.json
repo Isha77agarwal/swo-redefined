@@ -7,6 +7,8 @@
   "private": true,
   "dependencies": {
     "@prisma/client": "^4.9.0",
+    "@types/commander": "^2.12.2",
+    "@types/inquirer": "^9.0.3",
     "bootstrap": "^5.2.3",
     "chalk": "^5.2.0",
     "clear": "^0.1.0",
@@ -18,11 +20,11 @@
     "express-session": "^1.17.3",
     "express-winston": "^4.2.0",
     "figlet": "^1.5.2",
+    "inquirer": "8.0.1",
     "winston": "^3.8.2"
   },
   "scripts": {
     "start-dev": "yarn tsx watch src/server.ts",
-    "start-dev-cmd": "nodemon bin/swocmd.ts",
     "cmd": "chmod +x ./dist/bin/swocmd.js && ./dist/bin/swocmd.js",
     "docs": "docsify serve ./docs",
     "build": "tsc",
@@ -30,7 +32,7 @@
     "test": "jest"
   },
   "bin": {
-    "swocmd": "./dist/bin/swocmd.js"
+    "swocmd": "./dist/bin/swocli.js"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",

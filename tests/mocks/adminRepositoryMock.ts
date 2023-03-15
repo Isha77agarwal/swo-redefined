@@ -24,5 +24,26 @@ export default function createAdminRepositoryMock(): AdminRepository {
             }
             return Promise.resolve(null);
         },
+
+        createAdmin(adminDetail) {
+            return Promise.resolve({
+                username: adminDetail.username,
+                password: adminDetail.password,
+                name: adminDetail.name,
+                email: adminDetail.email,
+                mobile: adminDetail.mobile,
+                salt: adminDetail.salt,
+                is_super_admin: adminDetail.is_super_admin,
+                token: null,
+            });
+        },
+
+        createDepartmentAdmin(adminDetail, department) {
+            return Promise.resolve({
+                id: department,
+                name: "TEST_DEPT",
+                hod_id: adminDetail.username,
+            });
+        }
     };
 }

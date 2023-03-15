@@ -29,7 +29,7 @@ class MTechFellowship extends Fellowship {
 
     /**
      * Calculates the stipend of MTechFellowship on per day basis rounded off
-     * to nearest whole number.
+     * to the nearest whole number.
      */
     calculateFellowship(): number {
         // number of days for which fellowship has to be given.
