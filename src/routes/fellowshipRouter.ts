@@ -1,11 +1,11 @@
 import express from "express";
-import { isDeptLoggedIn } from "../middleware/authMiddleware";
+import { isAdminLoggedIn } from "../middleware/authMiddleware";
 import mtechFellowshipService from "../services/mtechFellowshipService";
 
 const fellowshipRouter = express.Router();
 
 // department must be logged in to use the methods in this router
-fellowshipRouter.use(isDeptLoggedIn);
+fellowshipRouter.use(isAdminLoggedIn);
 
 /**
  * gets fresh fellowship by session, year, month of the logged in

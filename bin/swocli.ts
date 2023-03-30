@@ -1,6 +1,6 @@
 import { program } from "commander";
 import { createPromptModule } from "inquirer";
-import { userService } from "../src/services/authService";
+import { authService } from "../src/services/authService";
 
 const prompt = createPromptModule();
 
@@ -80,7 +80,7 @@ program
             },
         ])
             .then((answers) =>
-                userService.createAdmin({
+                authService.createAdmin({
                     username: answers.username,
                     password: answers.password,
                     name: answers.name,

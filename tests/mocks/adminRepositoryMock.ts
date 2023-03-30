@@ -1,12 +1,15 @@
-import {AdminRepository} from "../../src/repositories/adminRepository";
-import {Admin} from "@prisma/client";
-import {AuthService} from "../../src/services/authService";
+import { AdminRepository } from "../../src/repositories/adminRepository";
+import { Admin } from "@prisma/client";
+import { AuthService } from "../../src/services/authService";
 
 export default function createAdminRepositoryMock(): AdminRepository {
     return {
         getAdminByUsername(username: string): Promise<Admin | null> {
             const salt = Buffer.from("TEST_SALT");
-            const password = AuthService.getHashedPasswordForTesting("TEST_PASS", salt);
+            const password = AuthService.getHashedPasswordForTesting(
+                "TEST_PASS",
+                salt
+            );
 
             const admin: Admin = {
                 username: "TEST_USER",
@@ -21,6 +24,23 @@ export default function createAdminRepositoryMock(): AdminRepository {
 
             if (username === admin.username) {
                 return Promise.resolve(admin);
+            }
+            return Promise.resolve(null);
+        },
+
+        getDepartmentByAdminUsername(admin_id): Promise<DepartmentWithAdmin | null> {
+            if(admin_id === "TEST_ADMIN") {
+                return Promise.resolve({
+                    id: "TEST_DEPT",
+                    name: "TEST DEPARTMENT",
+                    hod_id: "TEST_ADMIN",
+                    hod: {
+                        name: "TEST HOD",
+                        email: "test_admin@test.com",
+                        mobile: "9876543210",
+                        is_super_admin: false,
+                    }
+                });
             }
             return Promise.resolve(null);
         },
@@ -44,6 +64,6 @@ export default function createAdminRepositoryMock(): AdminRepository {
                 name: "TEST_DEPT",
                 hod_id: adminDetail.username,
             });
-        }
+        },
     };
 }

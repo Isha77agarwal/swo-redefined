@@ -7,6 +7,7 @@ import { Admin, Department } from "@prisma/client";
  */
 export interface AdminRepository {
     getAdminByUsername: (username: string) => Promise<Admin | null>;
+    getDepartmentByAdminUsername: (admin_id: string) => Promise<DepartmentWithAdmin | null>;
     createAdmin: (
         adminDetails: CreateAdminQueryParams
     ) => Promise<Admin | never>;
@@ -22,7 +23,18 @@ export const adminRepository: AdminRepository = {
         return client.admin.findUnique({
             where: {
                 username: username,
+            }
+        });
+    },
+
+    getDepartmentByAdminUsername: async (admin_id: string) => {
+        return client.department.findUnique({
+            where: {
+                hod_id: admin_id,
             },
+            include: {
+                hod: true,
+            }
         });
     },
 

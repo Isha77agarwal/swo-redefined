@@ -1,17 +1,24 @@
-<form action="/users/login/department" method="post">
+<!-- This form allows for department to sign in using username and password.-->
+<!-- username and password fields are required. -->
+<form action="/users/login/department" id="department-login" method="post" onsubmit="return false;">
 
     <!-- Username input -->
     <div class="form-floating mb-3">
-        <input type="text" id="username" class="form-control" placeholder="Username" />
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" />
         <label for="username">Username</label>
     </div>
 
     <!-- Password input -->
     <div class="form-floating mb-3">
-        <input type="password" id="password" class="form-control" placeholder="Password" />
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
         <label for="password">Password</label>
     </div>
 
+    <div id="validation-error-dept" class="alert alert-danger d-none" role="alert">
+    </div>
+
     <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+    <button type="submit" class="btn btn-primary btn-block mb-3" onclick="loginDepartment()">Sign in</button>
 </form>
+
+<script type="text/javascript" src="scripts/loginDepartment.js"></script>

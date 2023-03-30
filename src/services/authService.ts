@@ -113,7 +113,7 @@ export class AuthService {
     };
 }
 
-export const userService: AuthService = new AuthService(
+export const authService: AuthService = new AuthService(
     adminRepository,
     studentRepository
 );

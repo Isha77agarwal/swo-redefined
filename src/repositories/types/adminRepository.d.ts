@@ -7,3 +7,9 @@ declare interface CreateAdminQueryParams {
     salt: Buffer,
     is_super_admin: boolean
 }
+
+declare type DepartmentWithAdmin = Prisma.DepartmentGetPayload<{
+    include: {
+        Admin: true,
+    }
+}>;

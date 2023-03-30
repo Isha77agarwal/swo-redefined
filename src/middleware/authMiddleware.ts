@@ -7,8 +7,8 @@ import {RequestHandler} from "express";
  * @param res response object
  * @param next next function
  */
-export const isDeptLoggedIn: RequestHandler = (req, res, next) => {
-    if(req.session.department === undefined) {
+export const isAdminLoggedIn: RequestHandler = (req, res, next) => {
+    if(req.session.admin === undefined) {
         res.redirect("/");
         return;
     }
