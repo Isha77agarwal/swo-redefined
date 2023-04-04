@@ -40,6 +40,7 @@ app.use(express.static(__dirname + "/ui"));
 app.use(express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
 app.use("/bootstrap", express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
 app.use("/src/ui/media", express.static(__dirname + "/ui/media"));
+app.use("/src/ui/styles", express.static(__dirname + "/ui/styles"));
 
 if(environment === "DEVELOPMENT" || environment === "TEST") {
     app.use(expressWinston.logger({

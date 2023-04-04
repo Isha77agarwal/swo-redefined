@@ -28,8 +28,13 @@ router.post("/login/:role", multer().none(), async (req, res) => {
 
     try {
         if (role === "department") {
+
+            // if department admin is logging in check the password first and
+            // then get the department and admin information.
             await authService.loginDepartmentAdmin(username, password);
             const adminDetails = await userService.getAdminDetails(username);
+
+            // set session information
             req.session.department = {
                 id: adminDetails.department_id,
                 name: adminDetails.department_name,
@@ -63,6 +68,9 @@ router.post("/login/:role", multer().none(), async (req, res) => {
  */
 router.post("/logout", async (req, res) => {
     res.status(200).send("Logout successful.");
+    req.session.destroy(() => {
+        console.log("Session cannot be destroyed");
+    });
 });
 
 export default router;
