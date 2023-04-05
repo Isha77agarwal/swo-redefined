@@ -13,5 +13,8 @@
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double", {"allowTemplateLiterals" : true}]
-  }
+  },
+  "ignorePatterns": [
+    "src/ui/scripts/**"
+  ]
 }

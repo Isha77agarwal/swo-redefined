@@ -1,0 +1,2160 @@
+/*
+--------------------------------------------------------------------------------
+                                GENERAL STYLING
+--------------------------------------------------------------------------------
+*/
+html, body, ul, li, ol, p, h4 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+    background: #F7F9FC;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+h4 {
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+body {
+    display: flex;
+    height: auto;
+    position: relative;
+    overflow-x: hidden;
+}
+
+section {
+    width: 95%;
+    margin: 50px auto 0 auto;
+    position: relative;
+}
+
+select {
+    cursor: pointer;
+}
+
+/*
+--------------------------------------------------------------------------------
+                                    Custom Checkbox
+--------------------------------------------------------------------------------
+*/
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.custom-checkbox > p {
+    margin-left: 10px;
+    color: #999;
+}
+
+.switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #e9ecf0;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: #2ecc71;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*
+--------------------------------------------------------------------------------
+                                    SIDEBAR DESKTOP
+--------------------------------------------------------------------------------
+*/
+.sidebar {
+    height: 100vh;
+    width: 100px;
+    z-index: 8;
+    background: white;
+    padding-left: 20px;
+    padding-top: 30px;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+}
+
+.sidebar.is-active {
+    width: 200px;
+}
+
+.sidebar-tag {
+    display: none;
+}
+
+.sidebar-tag.is-active {
+    display: block;
+}
+
+.side-menu > .single-tab, .side-menu > .multi-tab .anchor-block {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-icon {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    opacity: .5;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+.menu-icon:hover {
+    opacity: 1;
+}
+
+.menu-option {
+    font-weight: bold;
+    font-size: 12px;
+    width: 50%;
+    margin-left: 30px;
+    margin-right: 15px;
+    color: #999;
+    opacity: 0;
+    transition: all ease-in .2s;
+}
+
+.menu-icon.active, .menu-option.active {
+    opacity: 1;
+}
+
+#icon-1 {
+    background-image: url('../media/home.png');
+}
+
+#icon-2 {
+    background-image: url('../media/scholarship.png');
+}
+
+#icon-3 {
+    background-image: url('../media/security.png');
+}
+
+#icon-4 {
+    background-image: url('../media/key.png');
+}
+
+#icon-5 {
+    background-image: url('../media/contract.png');
+}
+
+#icon-6 {
+    background-image: url('../media/photo.png');
+}
+
+#icon-7 {
+    background-image: url('../media/user.png');
+}
+
+#icon-8 {
+    background-image: url('../media/submit.png');
+}
+
+#icon-9 {
+    background-image: url('../media/renewal-scholar.png');
+}
+
+#icon-10 {
+    background-image: url('../media/law.png');
+}
+
+#icon-11 {
+    background-image: url('../media/university.png');
+}
+
+#icon-12 {
+    background-image: url('../media/time.png');
+}
+
+#icon-13 {
+    background-image: url('../media/calendar.png');
+}
+
+#icon-14 {
+    background-image: url('../media/upload.png');
+}
+
+#nav-icon3 {
+    width: 60px;
+    height: 30px;
+    position: relative;
+    margin: 15px 0 15px 5px;
+    --webkit-transform: rotate(0deg);
+    --moz-transform: rotate(0deg);
+    --o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+#nav-icon3 span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 90%;
+    background: #323A52;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    --webkit-transform: rotate(0deg);
+    --moz-transform: rotate(0deg);
+    --o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+/* Icon 3 */
+
+#nav-icon3 span:nth-child(1) {
+    top: 0;
+}
+
+#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
+    top: 15px;
+}
+
+#nav-icon3 span:nth-child(4) {
+    top: 30px;
+}
+
+#nav-icon3.open span:nth-child(1) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+    --webkit-transform: rotate(45deg);
+    --moz-transform: rotate(45deg);
+    --o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+    --webkit-transform: rotate(-45deg);
+    --moz-transform: rotate(-45deg);
+    --o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+}
+
+.side-menu {
+    margin-top: 70px;
+}
+
+.side-menu > li {
+    margin-bottom: 35px;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    width: 170px;
+    left: 70px;
+    z-index: 9;
+    background: white;
+    border-radius: 0 10px 10px 10px;
+    -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gallery-tab-submenu {
+    top: 60vh;
+}
+
+.submenu > li {
+    padding: 10px;
+    border-bottom: 1px solid #F2F4F5;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.submenu > li:hover, .profile-submenu > li:hover {
+    background: #F7F9FC;
+}
+
+.side-menu > .multi-tab:hover .multi-tab-submenu {
+    display: block;
+}
+
+.body {
+    width: calc(100% - 100px);
+    margin: 0 0 0 100px;
+    padding: 0;
+    position: relative;
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+
+}
+
+.body.active {
+    width: calc(100% - 200px);
+    margin: 0 0 0 200px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.header .logo {
+    height: 80px;
+    width: 200px;
+    background-image: url('../media/Logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.header > .profile {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    background-image: url('../media/person.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile-submenu {
+    display: none;
+    position: absolute;
+    right: 70px;
+    top: 80px;
+    z-index: 9;
+    background: white;
+    border-radius: 0 10px 10px 10px;
+    -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.profile-submenu > li {
+    width: 200px;
+    padding: 10px;
+    border-bottom: 1px solid #F2F4F5;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.profile-submenu > li > a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile:hover .profile-submenu {
+    display: block;
+}
+
+.profile-submenu-icon {
+    height: 20px;
+    width: 20px;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+#profile-menu-profile {
+    background-image: url('../media/profile.png');
+}
+
+#profile-menu-password {
+    background-image: url('../media/settings.png');
+}
+
+#profile-menu-signout {
+    background-image: url('../media/signout.png');
+}
+
+.body h2 {
+    font-size: 26px;
+    font-weight: 100;
+    font-family: Calibri, serif;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.body h2 b {
+    font-weight: 900;
+}
+
+.home-grid {
+    width: 100%;
+    min-height: 500px;
+    padding: 0 30px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.tile {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.about-tile, .about-tile-white {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #323A52;
+    min-height: 200px;
+    color: white;
+    position: relative;
+}
+
+.about-tile b {
+    color: #99c5ec;
+}
+
+.about-tile-white {
+    background: white;
+    color: #333;
+}
+
+.side-note {
+    margin: 20px 0;
+    color: #aaa;
+}
+
+.activity-list > li, .medal-list > li {
+    background: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.activity-list > li p {
+    color: #8b8b8b;
+}
+
+.activity-list > li > div > .activity-text {
+    font-size: 15px;
+    color: #333;
+}
+
+.activity-list > li > .activity-icon {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.activity-list > li > .activity-content {
+    width: calc(100% - 70px);
+}
+
+.scholarship-icon {
+    background-image: url('../media/fellowship.png');
+}
+
+.mediclaim-icon {
+    background-image: url('../media/doctor.png');
+}
+
+.award-icon {
+    background-image: url('../media/prize.png');
+}
+
+.certificate-icon {
+    background-image: url('../media/diploma.png');
+}
+
+.counseling-icon {
+    background-image: url('../media/idea.png');
+}
+
+h5 {
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.office-members {
+    text-align: center;
+}
+
+.office-members .member-grid {
+    width: 900px;
+    margin: 0 auto 180px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.office-members .member-grid .member-card {
+    background: white;
+    border-radius: 10px;
+    width: 200px;
+    height: 270px;
+    margin-bottom: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+}
+
+.member-card .member-img {
+    height: 120px;
+    width: 120px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    margin: 0 auto 20px;
+}
+
+.member-card p {
+    color: #8b8b8b;
+    font-size: 13px;
+}
+
+.member-card:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 300ms;
+}
+
+@media screen and (max-width: 1065px) {
+    .office-members .member-grid {
+        width: 450px;
+    }
+}
+
+footer {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 300px;
+    margin-top: -150px;
+    background: #323A52;
+    padding: 30px;
+}
+
+.copyright-content {
+    width: 70%;
+    margin: 230px auto 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+}
+
+.mobile-sidebar {
+    width: 300px;
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 1;
+    right: -300px;
+    background: white;
+    height: 100vh;
+    -webkit-box-shadow: -8px 1px 35px -34px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -8px 1px 35px -34px rgba(0, 0, 0, 0.75);
+    box-shadow: -8px 1px 35px -34px rgba(0, 0, 0, 0.75);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+.mobile-sidebar.is-active {
+    right: 0;
+}
+
+.mobile-sidebar > .close-icon {
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin: 20px;
+    background-image: url('../media/close.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.mobile-sidebar > .profile-settings-container {
+    margin: 20px 0;
+}
+
+.mobile-sidebar > .profile-settings-container .profile-settings {
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    background: url('../media/person.png') no-repeat center;
+    margin: 80px auto 0;
+}
+
+.mobile-sidebar > .profile-settings-container .sub-settings-container {
+    display: flex;
+    height: 70px;
+    width: 100%;
+    margin: 30px 0;
+    justify-content: space-between;
+}
+
+.mobile-sidebar > .profile-settings-container > a {
+    width: 100px;
+}
+
+.mobile-sidebar > .profile-settings-container .profile-submenu-icon {
+    height: 40px;
+    width: 40px;
+    margin: 0 auto
+}
+
+.mobile-sidebar > .profile-settings-container #change-password {
+    background-image: url('../media/settings.png');
+}
+
+.mobile-sidebar > .profile-settings-container #logout {
+    background-image: url('../media/signout.png');
+}
+
+.mobile-sidebar > .profile-settings-container p {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mobile-sidebar #accordion .card-header {
+    cursor: pointer;
+}
+
+.moburger {
+    display: none;
+}
+
+.mobile-sidebar #accordion .card-body {
+    padding: 0;
+}
+
+.mobile-sidebar #accordion .card-body li {
+    padding: 20px;
+    border: 1px solid #f2f3f5;
+}
+
+@media screen and (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .body {
+        width: 100%;
+        margin: 0;
+    }
+
+    .profile {
+        display: none;
+    }
+
+    .moburger {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #about-tile {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        width: 100%;
+        padding: 20px 20px;
+    }
+
+    .body h2 {
+        margin-left: 15px;
+    }
+
+    .home-grid {
+        padding: 0 10px;
+    }
+
+    .office-members .member-grid {
+        width: 200px;
+    }
+
+    .copyright-content {
+        max-width: 300px;
+    }
+}
+
+/*
+--------------------------------------------------------------------------------
+                          CAROUSEL PAGE SECTION
+--------------------------------------------------------------------------------
+*/
+.carousel-grid {
+    width: 100%;
+    position: relative;
+}
+
+.carousel-grid > div {
+    width: 100%;
+    min-height: 200px;
+    position: absolute;
+    display: none;
+. padding: 0 px 30 px;
+}
+
+.carousel-grid > div h2 {
+    margin: 40px 0 10px 0;
+}
+
+.carousel-grid > div.active {
+    display: block;
+}
+
+/*
+--------------------------------------------------------------------------------
+                       Table Section
+--------------------------------------------------------------------------------
+ */
+.table {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.table-header, .table-row {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-header h6 {
+    font-weight: bolder;
+    color: #C7C7C7;
+}
+
+.table-row-wrapper {
+    margin-bottom: 10px;
+}
+
+.table-row-wrapper > .table-row {
+    margin: 0;
+}
+
+.table-row-wrapper > .table-row:last-child {
+    margin-top: -40px;
+}
+
+.table-row {
+    background: white;
+    min-height: 80px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: #424C6C;
+    font-family: calibri, serif;
+    -webkit-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.table-mobile-label {
+    font-weight: 900;
+    display: none;
+}
+
+.table-row-wrapper.account-row {
+    margin-bottom: 20px;
+}
+
+.table-row.account-row {
+    border: 1px solid #f2f2f2;
+}
+
+.table-row b {
+    display: block;
+}
+
+@media screen and (max-width: 767px) {
+    .table-row b {
+        display: inline;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                  Scholarship and Fellowship (Introduction)
+-------------------------------------------------------------------------------*/
+.scholar-boards > .boards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.scholar-boards > .boards .board {
+    width: 47%;
+    margin: 10px;
+    background: white;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+    -webkit-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+}
+
+.board li {
+    width: 100%;
+    background: #424C6C;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+/*------------------------------------------------------------------------------
+                  Scholarship and Fellowship (Medals and Awards)
+-------------------------------------------------------------------------------*/
+.medal-list > li > .medal-icon {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('../media/medal.png');
+}
+
+.medal-list > li > .award-detail {
+    width: calc(100% - 70px);
+}
+
+.award-detail h6 {
+    font-weight: bolder;
+    color: #555;
+}
+
+.award-detail p {
+    color: #aaa;
+}
+
+/*------------------------------------------------------------------------------
+                  Scholarship and Fellowship (Insurance and Mediclaim)
+-------------------------------------------------------------------------------*/
+.btn-wrapper-center {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.btn-solid-blue {
+    padding: 10px;
+    border-radius: 5px;
+    background: #323A52;
+    color: white;
+    border: 3px solid #323A52;
+    margin: 10px;
+}
+
+.btn-hollow {
+    padding: 10px;
+    border-radius: 5px;
+    background: none;
+    color: #323A52;
+    border: 3px solid #323A52;
+    margin: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .btn-wrapper-center {
+        display: block;
+    }
+
+    .btn-wrapper-center button {
+        width: 100%;
+    }
+}
+
+#mediclaim-section > .table {
+    margin-top: 20px;
+}
+
+.ordered-list {
+    width: 100%;
+    position: relative;
+}
+
+.ordered-list > li {
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    background: white;
+    margin: 0 0 10px 0;
+    color: #424C6C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ordered-list > li > .numbered-icon {
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    border: 5px solid #ebde16;
+    color: #ebde16;
+    background: white;
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 1px 5px 0 5px;
+    opacity: .9;
+}
+
+.ordered-list > li > p {
+    width: calc(100% - 70px);
+}
+
+.coverage-chart > .table .table-row {
+    min-height: 50px;
+}
+
+.contact-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contact-list > div {
+    width: 30%;
+    flex-grow: 1;
+}
+
+.contact-card {
+    min-width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+    box-shadow: 3px 10px 15px -15px rgba(0, 0, 0, 0.19);
+}
+
+.contact-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../media/person.png');
+}
+
+.contact-icon-phone, .contact-icon-mail {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    border-radius: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.contact-icon-phone {
+    background-image: url('../media/phone.png');
+}
+
+.contact-icon-mail {
+    background-image: url('../media/mail.png');
+}
+
+.contact-details {
+    width: calc(100% - 80px);
+}
+
+.contact-details p {
+    font-size: 14px;
+    text-align: right;
+    color: #aaa;
+}
+
+.wrapper-space-between {
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+
+.wrapper-reverse {
+    display: flex;
+    margin: 10px 0;
+    flex-direction: row-reverse;
+}
+
+/*------------------------------------------------------------------------------
+                  Chief Proctor Office ( Discipline and Proctorial Board)
+-------------------------------------------------------------------------------*/
+.black-dot-detail .table .black-dot-rules {
+    text-align: left;
+}
+
+.black-dot-detail .table .black-dot-rules ul {
+    margin: 10px 0;
+}
+
+.black-dot-detail .table .black-dot-rules ul > li {
+    background: #f7f9fc;
+    margin: 5px 0;
+    font-size: 14px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+/*------------------------------------------------------------------------------
+                  Forms and Undertakings (Student Corner)
+-------------------------------------------------------------------------------*/
+#undertaking-section button {
+    margin: 0;
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------------
+                              Gallery
+-------------------------------------------------------------------------------*/
+#institute-section {
+    padding: 0 30px;
+}
+
+.img-grid {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+.hidden {
+    display: none;
+}
+
+.thumbnail {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+    border: 12px solid white;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 0 0 9px -3px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 0 9px -3px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 9px -3px rgba(0, 0, 0, 0.24);
+    transition: all .2s linear;
+}
+
+.thumbnail:hover .thumbnail-body {
+    bottom: 0;
+}
+
+.thumbnail-image {
+    width: 400px;
+    height: 300px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.thumbnail-body {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    bottom: -100px;
+    padding: 10px 0;
+    transition: all linear .2s;
+}
+
+.thumbnail-body h4 {
+    color: #444;
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.thumbnail-body p {
+    color: #999;
+    line-height: 5px;
+}
+
+.thumbnail span {
+    padding: 1px 18px;
+    background: #729bbb;
+    color: white;
+    border-radius: 100px;
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+/*------------------------------------------------------------------------------
+                                     OVERLAY
+-------------------------------------------------------------------------------*/
+.overlay.active {
+    display: block;
+    z-index: 2;
+}
+
+.img-big {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    left: 100px;
+. background: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.overlay .close-icon {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin: 20px;
+    background-image: url('../media/close.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.overlay .popup-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.overlay .popup-header > h4 {
+    margin: 0;
+}
+
+.overlay .popup-header > .close-icon {
+    margin: 0;
+}
+
+label {
+    margin: 0;
+    color: #aaa;
+}
+
+input[type=text], input[type=password], input[type=email], select {
+    width: 100%;
+    padding: 0 10px;
+    height: 35px;
+    margin: 5px 0;
+    background: #e9ecf0;
+    border: 0;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px auto;
+    padding: 5px 30px;
+}
+
+.overlay .form-note {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Dennis (18/04/2021) : Login Flash Message */
+.alert {
+    margin-bottom: 0;
+}
+
+/* End Dennis (18/04/2021) : Login Flash Message */
+.overlay > form, .overlay > div {
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    min-height: 100px;
+    margin: 50px auto 0 auto;
+    padding: 30px 20px;
+}
+
+.overlay > .fellowship-popup, .overlay > .nodue-popup {
+    max-width: 80%;
+    background: white;
+    border-radius: 10px;
+    min-height: 100px;
+    margin: 50px auto 0 auto;
+    padding: 30px 20px;
+    overflow: scroll;
+    max-height: 500px;
+}
+
+@media only screen and (max-width: 900px) {
+    .overlay > .fellowship-popup {
+        max-width: 100%;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                      Media Query for Image Gallery
+-------------------------------------------------------------------------------*/
+@media only screen and (max-width: 1827px) {
+    .thumbnail {
+        width: 380px;
+        height: 280px;
+    }
+
+    .thumbnail-image {
+        width: 380px;
+        height: 280px;
+    }
+}
+
+@media only screen and (max-width: 1755px) {
+    .thumbnail {
+        width: 350px;
+        height: 250px;
+    }
+
+    .thumbnail-image {
+        width: 350px;
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .thumbnail {
+        width: 400px;
+        height: 300px;
+    }
+
+    .thumbnail-image {
+        width: 400px;
+        height: 300px;
+    }
+
+    .img-big {
+        background-position: 0 120px;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .img-grid {
+        width: 700px;
+    }
+
+    .thumbnail {
+        width: 320px;
+        height: 220px;
+    }
+
+    .thumbnail-image {
+        width: 320px;
+        height: 220px;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .img-big {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .img-grid {
+        width: 500px;
+    }
+
+    .thumbnail {
+        height: 374px;
+    }
+
+    .thumbnail {
+        width: 450px;
+        height: 350px;
+    }
+
+    .thumbnail-image {
+        width: 450px;
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .img-grid {
+        width: 100%;
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: 300px;
+    }
+
+    .thumbnail-image {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                          Student Profile(Stuent Details)
+-------------------------------------------------------------------------------*/
+
+#student-profile .academic-info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#student-profile .profile-intro > p {
+    color: #aaa;
+}
+
+#student-profile .edit-profile {
+    display: flex;
+}
+
+#student-profile .edit-profile button {
+    margin: 20px 10px 0 0;
+    width: 200px;
+}
+
+.academic-info .profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    background-image: url('../media/person.png');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.academic-info .profile-intro {
+    margin: 0 30px;
+}
+
+.academic-info .profile-intro > h4 {
+    margin: 0;
+}
+
+.academic-info .profile-intro > ul {
+    margin-top: 20px;
+}
+
+.academic-icons {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.academic-icons > div {
+    display: flex;
+    margin: 0 40px;
+}
+
+.academic-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    opacity: .4;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+#personal-info {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+#student-profile > section {
+    margin: 20px auto 0 auto;
+}
+
+.personal-info > .row {
+    margin: 10px;
+}
+
+.personal-info b {
+    color: #aaa;
+}
+
+.btn-wide-green, .btn-wide-blue {
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    background: #2ecc71;
+    border: 0;
+}
+
+.btn-wide-blue {
+    background: #3aa7d1;
+}
+
+.btn-wide-green:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+/*------------------------------------------------------------------------------
+                            Student Profile(No dues)
+-------------------------------------------------------------------------------*/
+#no-dues .tile > button {
+    margin-top: 20px;
+}
+
+.no-due-activity, .no-due-activity h6 {
+    font-size: 16px;
+}
+
+.no-due-activity .table-row {
+    position: relative;
+    z-index: 1;
+}
+
+.no-due-activity .activity-tab {
+    background: white;
+    margin-top: -20px;
+    box-sizing: border-box;
+    height: 0;
+    overflow: hidden;
+    transition: all linear .2s;
+    position: relative;
+    z-index: 0;
+}
+
+.activity-tab > .list-header {
+    display: flex;
+}
+
+.list-header h6 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #aaa;
+}
+
+.activity-tab.active {
+    padding: 20px 0;
+    height: inherit;
+}
+
+.no-due-activity .activity-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.no-due-activity .activity-list > li {
+    border-radius: 0;
+    background: #e5eced52;
+    box-shadow: none;
+}
+
+.table-row .glyphicon {
+    opacity: .5;
+    font-size: 20px;
+    transition: all .2s linear;
+}
+
+.table-row .glyphicon.rotate {
+    transform: rotate(180deg);
+}
+
+.drop-tab {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+#noduesform label {
+    padding: 10px 0;
+}
+
+#noduesform input[type=radio] {
+    float: right;
+}
+
+#noduesform #description {
+    display: none;
+}
+
+#noduesform #description.active {
+    display: block;
+}
+
+@media screen and (max-width: 440px) {
+    .no-due-activity .activity-list > li {
+        display: flex;
+        padding: 10px 0;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                Student Profile(Fresh Scholarship application)
+-------------------------------------------------------------------------------*/
+.scholarship-application {
+    background: white;
+    position: relative;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.scholarship-application input[type="file"] {
+    display: block;
+    background: #323a52;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.scholarship-application input[type="submit"] {
+    background: #2ecc71;
+}
+
+.scholarship-application label {
+    color: #333;
+    margin: 20px 0 5px 0;
+}
+
+.scholarship-application p {
+    color: #818181;
+}
+
+.scholarship-application button {
+    width: 200px;
+    margin: 20px 0;
+}
+
+.scholarship-application label:last-of-type {
+    display: block;
+}
+
+#fresh-scholarship #scholarship-agency-select,
+#fresh-scholarship #scholarship-agency-textbox,
+#fresh-scholarship #scholarship-name-select,
+#fresh-scholarship #scholarship-name-textbox {
+    display: none;
+}
+
+#fresh-scholarship #scholarship-agency-select.active,
+#fresh-scholarship #scholarship-agency-textbox.active,
+#fresh-scholarship #scholarship-name-select.active,
+#fresh-scholarship #scholarship-name-textbox.active {
+    display: block;
+}
+
+#fresh-scholarship-form {
+    height: 80%;
+    overflow-y: scroll;
+}
+
+#fresh-scholarship-form .col {
+    padding: 0;
+}
+
+#fresh-scholarship-form p {
+    margin-bottom: 15px;
+}
+
+#fresh-scholarship-form iframe {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#fresh-scholarship-form label {
+    margin: 10px 0;
+}
+
+#fresh-scholarship-form input[type=submit] {
+    margin: 50px auto;
+    display: block;
+}
+
+/*------------------------------------------------------------------------------
+                        Empty placeholder
+-------------------------------------------------------------------------------*/
+.empty-placeholder {
+    min-height: 100px;
+    padding: 30px;
+    border-radius: 10px;
+    background: white;
+    margin: 0 auto;
+}
+
+.empty-placeholder > h4 {
+    font-weight: 300;
+    opacity: .3;
+    font-family: "Lucida Console", Courier, monospace;
+    text-align: center;
+    margin: 20px;
+    color: #323a52;
+}
+
+.empty-placeholder-icon {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    opacity: .2;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('../media/placeholder-icon.png');
+}
+
+/*------------------------------------------------------------------------------
+                        No Due Department Profile
+-------------------------------------------------------------------------------*/
+.no-due-section-department {
+    background: white;
+    min-height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nodue-tabs {
+    position: relative;
+}
+
+.nodue-tab {
+    width: 100%;
+    display: none;
+}
+
+.nodue-tab.active {
+    display: block;
+}
+
+.no-due-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nodue-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nodue-buttons > button {
+    padding: 10px;
+    background: #e9ecf0;
+    border: 0;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin: 5px;
+}
+
+.nodue-buttons > button.active {
+    background: #2e91cc;
+    color: white;
+}
+
+.search-nodue {
+    display: flex;
+}
+
+.nodue-tab .table-header {
+    padding: 0 40px;
+}
+
+.nodue-select-all {
+    padding: 0 20px;
+    display: none;
+}
+
+.nodue-select-all select {
+    display: inline-block;
+}
+
+.nodue-select-all.active {
+    display: block;
+}
+
+.reject-reason-tb {
+    display: none;
+}
+
+.reject-reason-tb.active {
+    display: block;
+}
+
+.reject-remark {
+    font-size: 13px;
+}
+
+@media screen and (max-width: 630px) {
+    .search-nodue {
+        display: block;
+    }
+
+    .no-due-controls {
+        display: block;
+    }
+
+    .nodue-select-all {
+        padding: 0;
+    }
+
+    .nodue-buttons {
+        width: 100%;
+    }
+}
+
+/*
+--------------------------------------------------------------------------------
+                       View Punishment Records (Department)
+--------------------------------------------------------------------------------
+ */
+.punishment-search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.punishment-search > button {
+    width: 150px;
+    height: 35px;
+    margin: 5px 0 5px 5px;
+}
+
+.department-punishment-records {
+    width: 100%;
+}
+
+.department-punishment-record {
+    width: 100%;
+    min-height: 200px;
+    background: white;
+    border-radius: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.department-punishment-record:hover {
+    transform: translateY(-10px);
+    -webkit-box-shadow: 0 13px 24px 0 rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0 13px 24px 0 rgba(0, 0, 0, 0.09);
+    box-shadow: 0 13px 24px 0 rgba(0, 0, 0, 0.09);
+}
+
+.punishment-record-header {
+    width: 100%;
+    height: 100px;
+    padding: 10px 20px;
+    background: #E9ECF0;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.punishment-record-header > .header-info {
+    align-content: space-between;
+}
+
+.punishment-record-header > .header-info:last-child {
+    text-align: right;
+}
+
+.punishment-record-header > .header-info p {
+    color: #888;
+}
+
+.punishment-record-header > .header-info h3 {
+    margin: 0 0 10px 0;
+}
+
+.black-dots {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.black-dot {
+    margin: 10px;
+    height: 20px;
+    width: 20px;
+    background-image: url("../media/splash.png");
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.punishment-list {
+    padding: 20px;
+}
+
+.punishment-list li {
+    background: #E9ECF0;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.punishment-item-check {
+    display: flex;
+    justify-content: space-between;
+}
+
+.punishment-item-check > input[type="radio"] {
+    height: 20px;
+    width: 20px;
+}
+
+.department-punishment-record .punishment-status {
+    text-align: right;
+    padding: 0 20px 20px 0;
+}
+
+.punishment-complete-icon {
+    height: 20px;
+    width: 20px;
+    background-image: url('../media/check.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+/*-----------------------------------------------------------------------------
+                            Result Upload (Depatment)
+------------------------------------------------------------------------------*/
+.batch-search-result {
+    display: none;
+}
+
+.batch-search-result.active {
+    display: block;
+}
+
+.selection-controll {
+    padding: 10px;
+    text-align: right;
+    display: none;
+}
+
+.selection-controll > input {
+    margin: 0 5px;
+}
+
+.selection-controll > .global-date {
+    display: none;
+}
+
+.selection-controll > .global-date.active {
+    display: inline;
+}
+
+.selection-controll.active {
+    display: block;
+}
+
+.batch-result-load {
+    width: 50px;
+    padding: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: none;
+}
+
+.batch-result-fail {
+    display: none;
+}
+
+.batch-result-fail.active, .batch-result-load.active {
+    display: block;
+}
+
+/*-----------------------------------------------------------------------------
+                           Result Upload (Depatment)
+------------------------------------------------------------------------------*/
+.result-upload-form input[type="file"] {
+    display: block;
+    background: #323a52;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    margin: 7px 0;
+    cursor: pointer;
+}
+
+/*------------------------------------------------------------------------------
+                          Fellowship Module (Department)
+-------------------------------------------------------------------------------*/
+#phd-fellowship .table-row-wrapper, #mtech-fellowship .table-row, #mtech-account-section .table-row-wrapper, #phd-account-section .table-row-wrapper {
+    cursor: pointer;
+    transition: .2s linear all;
+}
+
+#phd-fellowship .table-row-wrapper:hover, #mtech-fellowship .table-row:hover, #mtech-account-section .table-row-wrapper:hover, #phd-account-section .table-row-wrapper:hover {
+    transform: translateY(-7px);
+}
+
+#phd-fellowship .table-row-wrapper.select-fellowship > .table-row, #mtech-fellowship .table-row.select-fellowship, #mtech-account-section .table-row-wrapper.select-fellowship > .table-row, #phd-account-section .table-row-wrapper.select-fellowship > .table-row {
+    background: #276fae;
+    color: white;
+}
+
+#phd-fellowship .table-row-wrapper.select-fellowship > .table-row input, #mtech-fellowship .table-row.select-fellowship input, #phd-account-section .table-row-wrapper.select-fellowship > .table-row input {
+    background: #323A52;
+    color: white;
+}
+
+#phd-fellowship .fellowship-amount, #phd-fellowship .hra {
+    cursor: not-allowed;
+}
+
+.eligible-account-section {
+    display: none;
+}
+
+.eligible-account-section.active {
+    display: block;
+}
+
+.already-paid {
+    cursor: not-allowed;
+}
+
+.control-panel {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.control-panel > select {
+    width: 150px;
+    margin: 0 20px;
+}
+
+/*------------------------------------------------------------------------------
+                                Arrear Module
+-------------------------------------------------------------------------------*/
+.select-arrear .table-row {
+    background: #276fae;
+    color: white;
+}
+
+.arrear-batch-search-result .table-row {
+    cursor: pointer;
+}
+
+
+/*------------------------------------------------------------------------------
+                        Student Profile Media Queries
+-------------------------------------------------------------------------------*/
+@media screen and (max-width: 637px) {
+    .academic-info .profile-intro {
+        margin: 20px;
+    }
+
+    .academic-info .profile-intro > h4, .academic-info .profile-intro > p {
+        text-align: center;
+    }
+
+    .academic-icons > div {
+        display: flex;
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #student-profile .edit-profile button {
+        width: auto;
+    }
+
+    .academic-icon {
+        display: none;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                                Tables Media Queries
+------------------------------------------------------------------------------*/
+@media screen and (max-width: 767px) {
+    .table-header.hide-header-sm {
+        display: none;
+    }
+
+    .row.table-row > div {
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    .table-mobile-label {
+        display: inline;
+        font-weight: 900;
+    }
+
+    .chart-coverage-header {
+        justify-content: space-between;
+    }
+
+    .chart-coverage-header > div:last-child {
+        display: none;
+    }
+}
+
+/*------------------------------------------------------------------------------
+                           Icon List Media Queries
+-------------------------------------------------------------------------------*/
+@media screen and (max-width: 440px) {
+    .activity-list > li, .medal-list > li {
+        display: block;
+    }
+
+    .activity-list > li > .activity-icon, .medal-list > li > .medal-icon {
+        height: 80px;
+        width: 80px;
+        margin: 20px auto;
+    }
+
+    .activity-list > li > .activity-content, .medal-list > li > .award-detail {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}

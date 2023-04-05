@@ -1,21 +1,25 @@
 import MTechStudentFactory, {IMTechStudentFactory} from "./factories/student/MTechStudentFactory";
 import MTechFellowshipFactory, {IMTechFellowshipFactory} from "./factories/fellowship/MTechFellowshipFactory";
+import { IStipendRepository, StipendRepository } from "./repositories/stipendRepository";
+import { departmentService, DepartmentService } from "./services/departmentService";
 
 /**
  * AppConfig interface defines the common modules of the project.
  * It is used for dependency injection.
  */
 interface AppConfig {
-    MTechStipend: number;
     MTechStudentFactory: IMTechStudentFactory;
     MTechFellowshipFactory: IMTechFellowshipFactory;
+    StipendRepository: IStipendRepository;
+    DepartmentService: DepartmentService;
 }
 
 // default implementation of AppConfig
 const appConfig: AppConfig = {
-    MTechStipend: 15000,
     MTechStudentFactory: MTechStudentFactory,
-    MTechFellowshipFactory: MTechFellowshipFactory
+    MTechFellowshipFactory: MTechFellowshipFactory,
+    StipendRepository: StipendRepository,
+    DepartmentService: departmentService
 };
 
 export default appConfig;

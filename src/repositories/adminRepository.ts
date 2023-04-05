@@ -1,5 +1,5 @@
 import client from "../prisma/client";
-import {Admin} from "@prisma/client";
+import { Admin, Department } from "@prisma/client";
 
 /**
  * AdminRepository provides methods to retrieve Admin data from
@@ -7,15 +7,72 @@ import {Admin} from "@prisma/client";
  */
 export interface AdminRepository {
     getAdminByUsername: (username: string) => Promise<Admin | null>;
+    getDepartmentByAdminUsername: (admin_id: string) => Promise<DepartmentWithAdmin | null>;
+    createAdmin: (
+        adminDetails: CreateAdminQueryParams
+    ) => Promise<Admin | never>;
+
+    createDepartmentAdmin: (
+        adminDetails: CreateAdminQueryParams,
+        department: string
+    ) => Promise<Department | never>;
 }
 
 export const adminRepository: AdminRepository = {
-
     getAdminByUsername: (username: string) => {
         return client.admin.findUnique({
             where: {
                 username: username,
             }
         });
-    }
+    },
+
+    getDepartmentByAdminUsername: async (admin_id: string) => {
+        return client.department.findUnique({
+            where: {
+                hod_id: admin_id,
+            },
+            include: {
+                hod: true,
+            }
+        });
+    },
+
+    createAdmin: (adminDetails: CreateAdminQueryParams) => {
+        return client.admin.create({
+            data: {
+                username: adminDetails.username,
+                password: adminDetails.password,
+                name: adminDetails.name,
+                email: adminDetails.email,
+                is_super_admin: adminDetails.is_super_admin,
+                mobile: adminDetails.mobile,
+                salt: adminDetails.salt,
+            },
+        });
+    },
+
+    createDepartmentAdmin: (
+        adminDetails: CreateAdminQueryParams,
+        department: string
+    ) => {
+        return client.department.update({
+            where: {
+                id: department,
+            },
+            data: {
+                hod: {
+                    create: {
+                        username: adminDetails.username,
+                        password: adminDetails.password,
+                        name: adminDetails.name,
+                        email: adminDetails.email,
+                        is_super_admin: adminDetails.is_super_admin,
+                        mobile: adminDetails.mobile,
+                        salt: adminDetails.salt,
+                    },
+                },
+            },
+        });
+    },
 };

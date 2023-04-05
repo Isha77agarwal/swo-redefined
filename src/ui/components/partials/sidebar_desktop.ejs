@@ -1,0 +1,75 @@
+<!-- Desktop Side bar -->
+<div class="h-100 z-8 sidebar">
+    <!-- hamburger -->
+    <div id="nav-icon3" onclick="navIconHandler()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- End of hamburger -->
+
+    <!-- Desktop Side Menu list -->
+    <ul class="side-menu dashboard-menu">
+        <!-- Profile icon -->
+        <li class="single-tab department-profile">
+            <a href="#">
+                <div class="menu-icon" id="icon-7"></div>  <!-- Active Icon -->
+            </a>
+            <a href="#" class="sidebar-tag">
+                <p class="menu-option">Profile</p>
+            </a>
+        </li>
+        <!-- End of Profile link Icon -->
+
+        <!-- Fellowships -->
+        <li class="multi-tab mtech-fellowship phd-fellowship mtech-fellowship-start phd-fellowship-start">
+            <ul class="submenu multi-tab-submenu">
+                <li><a href="mtech-fellowship">M.Tech Fellowship</a></li>
+                <li><a href="#">Ph.D. Fellowship</a></li>
+                <li><a href="#">M.Tech Fellowship Start Date</a></li>
+                <li><a href="#">Ph.D. Fellowship Start Date</a></li>
+                <li><a href="#">Arrear</a></li>
+            </ul>
+            <div class="anchor-block">
+                <a href="#">
+                    <div class="menu-icon" id="icon-2"></div>
+                </a>
+                <a href="#" class="sidebar-tag">
+                    <p class="menu-option">Fellowship Module</p>
+                </a>
+            </div>
+        </li>
+        <!-- End of Fellowships link Icon -->
+
+    </ul>
+    <!-- End of Desktop Side Menu List -->
+</div>
+<!-- End of Desktop Side bar -->
+
+<script type="text/javascript">
+
+    function navIconHandler() {
+        document.getElementById("nav-icon3").classList.toggle("open");
+        const sidebars = document.getElementsByClassName("sidebar");
+        for (let i = 0; i < sidebars.length; i++) {
+            sidebars.item(i).classList.toggle("is-active");
+        }
+        setTimeout(function() {
+            const sidebarTags = document.getElementsByClassName("sidebar-tag");
+            for (let i = 0; i < sidebarTags.length; i++) {
+                sidebarTags.item(i).classList.toggle("is-active");
+            }
+        }, 100);
+
+        const bodyElements = document.getElementsByClassName("body");
+        for (let i = 0; i < bodyElements.length; i++) {
+            bodyElements.item(i).classList.toggle("active");
+        }
+
+        const menuOptions = document.getElementsByClassName("menu-option");
+        for (let i = 0; i < menuOptions.length; i++) {
+            menuOptions.item(i).classList.toggle("active");
+        }
+    }
+</script>
