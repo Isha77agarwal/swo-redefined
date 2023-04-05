@@ -1,5 +1,7 @@
 import express from "express";
-import {AuthService, userService} from "../services/authService";
+import {AuthService, authService} from "../services/authService";
+import multer from "multer";
+import { userService } from "../services/userService";
 
 const router = express.Router();
 
@@ -7,7 +9,7 @@ const router = express.Router();
  * It allows for department and students to login based on the role path param passed.
  * takes username and password in the body of the request and authenticates the user.
  */
-router.post("/login/:role", async (req, res) => {
+router.post("/login/:role", multer().none(), async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const role = req.params.role;
@@ -26,17 +28,31 @@ router.post("/login/:role", async (req, res) => {
 
     try {
         if (role === "department") {
-            await userService.loginDepartment(username, password);
+
+            // if department admin is logging in check the password first and
+            // then get the department and admin information.
+            await authService.loginDepartmentAdmin(username, password);
+            const adminDetails = await userService.getAdminDetails(username);
+
+            // set session information
+            req.session.department = {
+                id: adminDetails.department_id,
+                name: adminDetails.department_name,
+            };
+            req.session.admin = {
+                id: adminDetails.hod_id,
+                name: adminDetails.hod_name,
+                is_super_admin: adminDetails.hod_is_super_admin,
+                email: adminDetails.hod_email,
+                mobile: adminDetails.hod_mobile
+            };
         } else {
-            await userService.loginStudent(username, password);
+            await authService.loginStudent(username, password);
         }
         res.status(200).send("Login successful.");
     } catch (err) {
-        console.log(err);
         switch ((err as Error).message) {
             case AuthService.USER_NOT_EXISTS_ERROR:
-                res.status(401).send("User doesn't exist!");
-                break;
             case AuthService.PASSWORD_ERROR:
                 res.status(401).send("Username or password is wrong!");
                 break;
@@ -52,6 +68,9 @@ router.post("/login/:role", async (req, res) => {
  */
 router.post("/logout", async (req, res) => {
     res.status(200).send("Logout successful.");
+    req.session.destroy(() => {
+        console.log("Session cannot be destroyed");
+    });
 });
 
 export default router;

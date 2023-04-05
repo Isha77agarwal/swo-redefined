@@ -55,6 +55,12 @@ enum PeriodType {
     Pending
 }
 
+enum Gender {
+    Male
+    Female
+    Other
+}
+
 model Admin {
     username       String      @id
     password       Bytes
@@ -122,15 +128,24 @@ model FinancialInformation {
 }
 
 model AcademicInformation {
-    student         Student   @relation(fields: [registration_no], references: [registration_no])
-    registration_no String    @id
-    category        Category
-    religion        Religion?
-    nationality     String?
-    email           String
-    password        String
-    date_of_birth   DateTime
-    father_name     String
+    student           Student   @relation(fields: [registration_no], references: [registration_no])
+    registration_no   String    @id
+    category          Category
+    alloted_category  Category
+    religion          Religion?
+    nationality       String?
+    email             String
+    date_of_birth     DateTime
+    father_name       String
+    mother_name       String
+    guardian_name     String
+    guardian_mobile   String
+    photograph        Bytes
+    mobile            String
+    gender            Gender
+    present_address   String
+    permanent_address String
+    aadhar            String
 }
 
 model Student {
@@ -248,4 +263,9 @@ model HRADuration {
     registration_no String   @id
     start_date      DateTime
     end_date        DateTime
+}
+
+model MTechStipend {
+    start_date DateTime @id
+    amount     Int
 }

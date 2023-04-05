@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>M.Tech Fellowship</title>
+    <link rel="styleesheet" href="/src/ui/styles/animate.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<%- include("../components/partials/sidebar_desktop") %>
+<div class="body">
+    <div id="mtech-fellowship">
+        <section>
+            <h2>M.Tech Fellowship</h2>
+            <div class="tile about-tile">
+                <h4>Fellowship</h4>
+                <p>
+                    This window can be used to give fellowship either for the current month
+                    (Fellowship Type : Fresh) or any previous month, in case a student was either
+                    not given the fellowship or partially given for any previous month (Fellowship Type : Pending).
+                    To forward fellowship, select : <br/>
+                    <b>Branch : </b>Either All or any branch given in the dropdown menu.<br/>
+                    <b>Session : </b>Select session for which fellowship is to be given.<br/>
+                    <b>Semester : </b>Select semester of the student. It shall be 1 and 3 for odd semester & 2 and 4 for
+                    even semester. If any student is going to 5th semester and he/she is eligible to get fellowship
+                    then select 5.
+                    <br/><br/>
+                    <b>Fellowship types :</b>
+                    <br/>
+                    <em>Fresh :</em> This option may be used to forward fellowship for current month. (From 21st to 27th
+                    of
+                    the month)<br/>
+                    <em>Pending :</em> This option may be used to forward fellowship of a student who was either not
+                    given
+                    any fellowship of any previous month and year using fresh option or was not given full
+                    fellowship of any previous month/year using fresh option. (From 5th to 20th of the month)<br/>
+                    <br/>
+                    <b>Note :</b> Please ensure “ M.Tech. fellowship start date” has been filled for all eligible
+                    students
+                    before forwarding the fellowship. For this, please use <a style="color : white;"
+                                                                              href="/departmentprofile?tab=mtech-fellowship-start"><em>“
+                            M. Tech. fellowship start date”</em></a> Tab.
+                </p>
+            </div>
+        </section>
+
+        <%- include("../components/partials/fellowship_form", {data: data}) %>
+
+        <!-- Footer -->
+        <footer>
+            <p class="copyright-content">Copyright © <a href="http://www.mnnit.ac.in" style="color:white;">MNNIT</a> -
+                All
+                Rights Reserved Developed & Maintained By : <a href="/team" target="_blank" style="color : #fbf9bd;">Web
+                    Team</a></p>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+</div>
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

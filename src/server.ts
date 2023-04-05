@@ -7,9 +7,8 @@ import expressWinston from "express-winston";
 
 import rootRouter from "./routes/rootRouter";
 import userRouter from "./routes/userRouter";
+import departmentRouter from "./routes/departmentRouter";
 import path from "path";
-import {MTechFellowshipService} from "./services/mtechFellowshipService";
-import {studentRepository} from "./repositories/studentRepository";
 
 // put .env file variables in process.env
 dotenv.config();
@@ -24,22 +23,24 @@ app.set("views", path.join(__dirname, "/ui"));
 
 // setting up middlewares
 app.use(express.json());
-app.use(express.static(__dirname + "/ui"));
-app.use("/bootstrap", express.static(__dirname + "/node_modules/bootstrap/dist"));
-app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist"));
-app.use("/ui/media", express.static(__dirname + "/ui/media"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(
-  session({
-    secret: sessionSecret ?? "sessionSecret",
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // one day
-    },
-    resave: false,
-  })
+    session({
+        secret: sessionSecret ?? "sessionSecret",
+        saveUninitialized: true,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24, // one day
+        },
+        resave: false,
+    })
 );
+// setting up static files
+app.use(express.static(__dirname + "/ui"));
+app.use(express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
+app.use("/bootstrap", express.static(path.join(__dirname, "../node_modules/bootstrap/dist")));
+app.use("/src/ui/media", express.static(__dirname + "/ui/media"));
+app.use("/src/ui/styles", express.static(__dirname + "/ui/styles"));
 
 if(environment === "DEVELOPMENT" || environment === "TEST") {
     app.use(expressWinston.logger({
@@ -71,9 +72,8 @@ app.use(expressWinston.errorLogger({
 // setting up routers
 app.use("/", rootRouter);
 app.use("/users/", userRouter);
+app.use("/department/", departmentRouter);
 
 app.listen(port, () => {
   console.log(`[SUCCESS] Server is running on http://localhost:${port}`);
-  const mTechFellowshipService = new MTechFellowshipService(studentRepository);
-  mTechFellowshipService.getFreshMTechFellowship("TEST_DEPT", "January", 2023, "2020-21");
 });

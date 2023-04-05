@@ -34,9 +34,25 @@ declare global {
         passed: boolean;
     }
 
+    // session information regarding department
     export type DepartmentSession = {
         id: string,
+        name: string,
     };
+
+    // session information regarding admin
+    export type AdminSession = {
+        id: string,
+        name: string,
+        email: string,
+        mobile: string,
+        is_super_admin: boolean,
+    }
+
+    export type MTechStipend = {
+        start_date: Date;
+        amount: number;
+    }
 
     // studentRepository types
     export type StudentWithFreshMTechFellowshipDetail = Prisma.StudentGetPayload<{
@@ -51,6 +67,7 @@ declare global {
 declare module "express-session" {
     export interface SessionData {
         department: DepartmentSession;
+        admin: AdminSession;
     }
 }
 

@@ -1,0 +1,68 @@
+<section id="fellowship-panel">
+    <div class="tile about-tile-white">
+        <!-- <h4>Fellowship Credentials</h4> -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="branch">Branch</label>
+                <select id="branch">
+                    <% data.branches.forEach(function(branch){ %>
+                        <option value="<%= branch.id; %>"><%= branch.name; %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="session">Session</label>
+                <%var curr_year = new Date().getFullYear();%>
+                <select id="session">
+                    <%for (var year=curr_year; year>=curr_year-10; year--) {%>
+                        <option value="<%= `${year} - ${year%100+1}`%>"><%= `${year} - ${year%100+1}`%></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="fellowship-type">Fellowship Type</label>
+                <select id="fellowship-type">
+                    <option value="fresh">Fresh</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="semester">Semester</label>
+                <select id="semester">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="month">Month</label>
+                <select id="month">
+                </select>
+            </div>
+        </div>
+        <div class="custom-checkbox">
+            <label class="switch" for="preview">
+                <input type="checkbox" id="preview" />
+                <span class="slider round"></span>
+            </label>
+            <p>Display Already Filled Candidates</p>
+        </div>
+        <input class="btn-wide-green" type="button" value="Submit">
+    </div>
+
+    <div class="batch-search-result table" data-fellowshipStart="" data-fellowshipEnd=""
+         data-fellowshipAmount="">
+        <!-- Fellowship Eligible Students appear here -->
+    </div>
+    <div class="batch-result-load">
+        <span class="throbber-loader">Loading&#8230;</span>
+    </div>
+    <div class="batch-result-fail empty-placeholder">
+        <div class="empty-placeholder-icon"></div>
+        <h4>No Candidates are Elegible for Fresh Fellowship in the inputted Session and Branch</h4>
+    </div>
+</section>
